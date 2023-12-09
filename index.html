@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Practica de Platzi</title>
+    <link href="./css/normalize.css"/ rel="stylesheet"/>
+    <link href="./css/estilos.css"/ rel="stylesheet"/>
+</head>
+<body>
+    <header>
+        <h1>Batalla Pokemon</h1>
+    </header>  
+
+    <section class="selec_player">
+        <h2>Elige un Pokemon</h2>
+        <label>
+            <p>Pokemon1<input id="poke1" type="radio" name="poke_player"></input></p>
+            <p>Pokemon2<input id="poke2" type="radio" name="poke_player"></input></p>
+            <p>Pokemon3<input id="poke3" type="radio" name="poke_player"></input></p>
+            <button id="confirm">Seleccionar</button>
+        </label>
+    </section>
+
+    <section class="info_battle">
+        <h2>Elige tu Ataque</h2>
+        <p>Tu pokemon <span id="spanplayer">_</span> tiene <span id="player_vidas">3</span> vidas</p>
+        <p>El Pokemon enemigo <span id="spanpc">_</span> tiene <span id="pc_vidas">3</span> vidas</p>
+        <label>
+            <button id="atack_1" name="ataque 1">Ataque1</button>
+            <button id="atack_2" name="ataque 2">Ataque2</button>
+            <button id="atack_3" name="ataque 3">Ataque3</button>
+        </label>
+    </section>
+
+    <section id="combate"></section>
+
+    <section class="endgame">
+        <button>Reiniciar Partida</button>
+    </section>
+    <script src="./js/script.js"></script>
+</body>
+</html>

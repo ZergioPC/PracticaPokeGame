@@ -38,6 +38,31 @@ let ataquePc = 0;
 let historial = document.getElementById("combate");
 let parrafo;
 
+//Variables de CSS - Seleccion de pokemon
+let cssPoke1 = document.getElementById("tar_poke1");
+let cssPoke2 = document.getElementById("tar_poke2");
+let cssPoke3 = document.getElementById("tar_poke3");
+
+//CSS seleccion de Pokemon
+function cssSelPokemon(){
+    if(pokemon1.checked){
+        cssPoke1.setAttribute("class","tarjet_pokemon_check");
+        
+        cssPoke2.setAttribute("class","tarjet_pokemon");
+        cssPoke3.setAttribute("class","tarjet_pokemon");
+    }else if(pokemon2.checked){
+        cssPoke2.setAttribute("class","tarjet_pokemon_check");
+
+        cssPoke1.setAttribute("class","tarjet_pokemon");
+        cssPoke3.setAttribute("class","tarjet_pokemon");
+    }else if(pokemon3.checked){
+        cssPoke3.setAttribute("class","tarjet_pokemon_check");
+
+        cssPoke1.setAttribute("class","tarjet_pokemon");
+        cssPoke2.setAttribute("class","tarjet_pokemon");
+    }
+}
+
 //Ocultar Elementos
 function hideUX(){
     sectionBatalla.style.display = "none";
@@ -241,6 +266,11 @@ function playerAtack3(){
 function newGame(){
     location.reload();
 }
+
+//CSS EventListener
+pokemon1.addEventListener("click",cssSelPokemon)
+pokemon2.addEventListener("click",cssSelPokemon)
+pokemon3.addEventListener("click",cssSelPokemon)
 
 //EventListeners
 btn_confirm.addEventListener("click",selPokemon);

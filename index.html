@@ -14,12 +14,26 @@
 
     <section id="selec_player">
         <h2>Elige un Pokemon</h2>
-        <label>
-            <p>Pokemon1<input id="poke1" type="radio" name="poke_player"></input></p>
-            <p>Pokemon2<input id="poke2" type="radio" name="poke_player"></input></p>
-            <p>Pokemon3<input id="poke3" type="radio" name="poke_player"></input></p>
-            <button id="confirm">Seleccionar</button>
-        </label>
+        <div class="tarjet_selector">
+            <label for="poke1" class="tarjet_pokemon" id="tar_poke1">
+                <p>Pikachu</p>
+                <img src="./resources/Pikachu.webp" alt="pikachu">
+            </label>
+            <input id="poke1" type="radio" name="poke_player"></input>
+
+            <label for="poke2" class="tarjet_pokemon" id="tar_poke2">
+                <p>Combusken</p>
+                <img src="./resources/Combysken.webp" alt="Combusken">
+            </label>
+            <input id="poke2" type="radio" name="poke_player"></input>
+            
+            <label for="poke3" class="tarjet_pokemon" id="tar_poke3">
+                <p>Duskull</p>
+                <img src="./resources/Duskull.webp" alt="Duskull">
+            </label>
+            <input id="poke3" type="radio" name="poke_player"></input>
+        </div>
+        <button id="confirm">Seleccionar</button>
     </section>
 
     <section id="info_battle">

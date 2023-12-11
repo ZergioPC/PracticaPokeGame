@@ -7,6 +7,11 @@ let pokemon1 = document.getElementById("poke1");
 let pokemon2 = document.getElementById("poke2");
 let pokemon3 = document.getElementById("poke3");
 
+//variables de Secciones
+let sectionBatalla = document.getElementById("info_battle");
+let sectionSelPokemon = document.getElementById("selec_player");
+let sectionReset = document.getElementById("endgame");
+
 //variables info battle
 let spanPlayer = document.getElementById("spanplayer");
 let spanPlayerVida = document.getElementById("player_vidas");
@@ -15,6 +20,7 @@ let spanPcVida = document.getElementById("pc_vidas");
 
 //var botones confirm
 let btn_confirm = document.getElementById("confirm");
+let btn_reset = document.getElementById("btn_reset");
 
 //variables pokemon vidas
 let vida_player = 3;
@@ -32,6 +38,12 @@ let ataquePc = 0;
 let historial = document.getElementById("combate");
 let parrafo;
 
+//Ocultar Elementos
+function hideUX(){
+    sectionBatalla.style.display = "none";
+    sectionReset.style.display = "none";
+}
+
 //funcion randomizador
 function randNumber(min,max){
     return Math.floor((max-min)*Math.random()+min);
@@ -43,10 +55,16 @@ function selPokemon(){
     //jugador
     if(pokemon1.checked){
         spanPlayer.innerHTML = "Pokemon1";
+        sectionBatalla.style.display = "block";
+        sectionSelPokemon.style.display = "none";
     }else if(pokemon2.checked){
         spanPlayer.innerHTML = "Pokemon2";
+        sectionBatalla.style.display = "block";
+        sectionSelPokemon.style.display = "none";
     }else if(pokemon3.checked){
         spanPlayer.innerHTML = "Pokemon3";
+        sectionBatalla.style.display = "block";
+        sectionSelPokemon.style.display = "none";
     }else{
         alert("no hay pokemon seleccionado");
     }
@@ -125,6 +143,15 @@ function historiaCombate(){
     }
 }
 
+//Desactivar botones
+function desactivarBotones(){
+    atk_1.disabled = true;
+    atk_2.disabled = true;
+    atk_3.disabled = true;
+
+    sectionReset.style.display="block";
+}
+
 //Calculos del Combate
 function saludEnemigo(){
     if(gameOver == true){
@@ -134,6 +161,7 @@ function saludEnemigo(){
         spanPcVida.innerHTML = vida_enemigo;
         if(vida_enemigo == 0){
             gameOver = true;
+            desactivarBotones();
             final("Tu Ganaste");
         }
     }
@@ -147,6 +175,7 @@ function saludPlayer(){
         spanPlayerVida.innerHTML = vida_player;
         if(vida_player == 0){
             gameOver = true;
+            desactivarBotones();
             final("Perdiste");
         }
     }
@@ -209,9 +238,16 @@ function playerAtack3(){
     historiaCombate();
 }
 
+function newGame(){
+    location.reload();
+}
+
 //EventListeners
 btn_confirm.addEventListener("click",selPokemon);
+btn_reset.addEventListener("click",newGame);
 
 atk_1.addEventListener("click",playerAtack1)
 atk_2.addEventListener("click",playerAtack2)
 atk_3.addEventListener("click",playerAtack3)
+
+window.addEventListener("load",hideUX)

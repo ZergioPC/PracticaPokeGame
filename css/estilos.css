@@ -1,10 +1,35 @@
 header{
     display: flex;
     justify-content: center;
+    font-family: 'Righteous', sans-serif;
+    font-size: 2rem;
+}
+
+h1{
+    margin: 2rem 0 1rem 0;
+    color: #ffe600;
+    text-shadow: 4px 4px 0px rgb(85, 67, 245);
+}
+
+h2{
+    margin: 1.5rem;
+    padding: 10px 50px;
+    background-color: rgba(0, 0, 0, 0.459);
+    font-family: 'Righteous', sans-serif;
+    font-size: 3rem;
+    color: rgb(255, 255, 255);
+    text-shadow: 4px 4px 0px rgb(48, 129, 208);
+    border-radius: 20px;
 }
 
 input{
     display: none;
+}
+
+body {
+    background-image: url("../resources/background.png");
+    background-size: auto 100vh;
+    font-family: 'Hedvig Letters Sans', sans-serif;
 }
 
 /* SELECCION DE POKEMON */
@@ -29,34 +54,125 @@ input{
     height: 250px;
     padding: 10px;
     margin: 0 10px;
-    background-color: rgb(200, 175, 224);
+    background-color: rgba(0, 0, 0, 0.459);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    color: #ffe600;
+    text-shadow:1px 1px 3px #f5f5f56e;
+    transition-property: transform;
+    transition-duration: 50ms;
 }
 
 .tarjet_pokemon:hover{
-    background-color: red;
+    background-color: rgb(255, 255, 255);
+    color: rgb(85, 67, 245);
     cursor: pointer;
+    transform: scale(105%);
+    transition-property: transform;
 }
 .tarjet_pokemon_check{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 200px;
-    height: 250px;
+    width: 195px;
+    height: 245px;
     padding: 10px;
     margin: 0 10px;
-    background-color: antiquewhite;
+    background-color: rgba(0, 0, 0, 0.459);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    border: solid 5px #F5F5F5;
+    color: #ffe600;
+    text-shadow:1px 1px 3px #f5f5f56e;
+    transition-property: transform;
+    transition-duration: 50ms;
+    box-shadow: 0px 0px 5px #F5F5F5;
+    animation-name: tarjetChoise;
+    animation-duration: 400ms;
 }
 
-.tarjet_pokemon p{
+.tarjet_pokemon p, .tarjet_pokemon_check p{
     margin: 10px 0 5px 0;
     text-align: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 2rem;
+    font-family: 'Hedvig Letters Sans', sans-serif;
+    font-weight: bold;
 }
 
 .tarjet_pokemon img{
     image-rendering: pixelated;
-    transform: scale(130%) ;
+    transform: scale(130%);
+}
+
+.tarjet_pokemon_check img{
+    image-rendering: pixelated;
+    transform: scale(130%);
+    animation-name: selected;
+    animation-duration: 1500ms;
+    animation-iteration-count: infinite;
+}
+
+@keyframes selected {
+    0%{
+        transform: translateY(20px) scale(130%);
+    }
+    15%{
+        transform: translateY(30px) scalex(140%) scaleY(110%);
+    }
+    35%{
+        transform: translateY(-40px) scaley(140%) scaleX(110%);
+    }
+    55%{
+        transform: translateY(30px) scalex(140%) scaleY(110%);
+    }
+    70%{
+        transform: translateY(20px) scale(130%);
+    }
+    100%{
+        transform: translateY(20px) scale(130%);
+    }
+
+}
+
+@keyframes tarjetChoise {
+    0%{
+        transform: scale(100%);
+        background-color: rgba(0, 0, 0, 0.459);
+        filter: blur(0);
+        box-shadow: 0px 0px 0px #ff000000;
+        color: #ffe600;
+    }
+    60%{
+        transform: scale(110%);
+        background-color: rgb(255, 255, 255);
+        filter: blur(5px) brightness(2);
+        box-shadow: 0px 0px 10px rgb(255, 251, 0)0;
+        color: #ffffff;
+    }
+    100%{
+        transform: scale(100%);
+        background-color: rgba(0, 0, 0, 0.459);
+        filter: blur(0);
+        box-shadow: 0px 0px 0px #ff000000;
+        color: #ffe600;
+    }
+}
+
+#confirm{
+    padding: 10px 25px;
+    background-color: #ffe600;
+    border: solid 3px rgb(85, 67, 245);
+    border-radius: 20px;
+    color: rgb(85, 67, 245);
+    font-weight: bold;
+    font-size: 2rem;
+    transition-duration: 50ms;
+}
+
+#confirm:hover{
+    background-color: #ffffff;
+    color: rgb(85, 67, 245);
+    transform: scale(105%);
 }
 
 /* COMBATE POKEMON */
@@ -67,7 +183,7 @@ input{
 .arenaBatalla{
     display: grid;
     width: 85%;
-    height: 60vh;
+    height: 50vh;
     margin: 0 auto;
     grid-template-columns: 40% 60%;
     grid-template-rows: 70% 30%;

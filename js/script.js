@@ -80,15 +80,15 @@ function selPokemon(){
     //jugador
     if(pokemon1.checked){
         spanPlayer.innerHTML = "Pokemon1";
-        sectionBatalla.style.display = "block";
+        sectionBatalla.style.display = "flex";
         sectionSelPokemon.style.display = "none";
     }else if(pokemon2.checked){
         spanPlayer.innerHTML = "Pokemon2";
-        sectionBatalla.style.display = "block";
+        sectionBatalla.style.display = "flex";
         sectionSelPokemon.style.display = "none";
     }else if(pokemon3.checked){
         spanPlayer.innerHTML = "Pokemon3";
-        sectionBatalla.style.display = "block";
+        sectionBatalla.style.display = "flex";
         sectionSelPokemon.style.display = "none";
     }else{
         alert("no hay pokemon seleccionado");
@@ -174,7 +174,7 @@ function desactivarBotones(){
     atk_2.disabled = true;
     atk_3.disabled = true;
 
-    sectionReset.style.display="block";
+    sectionReset.style.display="flex";
 }
 
 //Calculos del Combate
@@ -247,6 +247,7 @@ function playerAtack1(){
     enemyAtack();
     batalla();
     historiaCombate();
+    historial.scrollBy(0,-innerHeight);
 }
 
 function playerAtack2(){
@@ -254,6 +255,7 @@ function playerAtack2(){
     enemyAtack();
     batalla();
     historiaCombate();
+    historial.scrollBy(0,-innerHeight);
 }
 
 function playerAtack3(){
@@ -261,6 +263,7 @@ function playerAtack3(){
     batalla();
     enemyAtack();
     historiaCombate();
+    historial.scrollBy(0,-innerHeight);
 }
 
 function newGame(){

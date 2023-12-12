@@ -7,6 +7,7 @@ input{
     display: none;
 }
 
+/* SELECCION DE POKEMON */
 #selec_player{
     display: flex;
     flex-direction: column;
@@ -33,6 +34,7 @@ input{
 
 .tarjet_pokemon:hover{
     background-color: red;
+    cursor: pointer;
 }
 .tarjet_pokemon_check{
     display: flex;
@@ -55,4 +57,87 @@ input{
 .tarjet_pokemon img{
     image-rendering: pixelated;
     transform: scale(130%) ;
+}
+
+/* COMBATE POKEMON */
+#info_battle{
+    flex-direction: column;
+    align-items: center;
+}
+.arenaBatalla{
+    display: grid;
+    width: 85%;
+    height: 60vh;
+    margin: 0 auto;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 70% 30%;
+}
+
+#batalla_visual{
+    grid-column: 2/3;
+    grid-row: 1/3;
+    background-color: antiquewhite;
+    border-radius: 0 20px 20px 0;
+}
+
+#batalla_ataques{
+    grid-column: 1/2;
+    grid-row: 2/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+    border-radius: 0 0 0 20px;
+}
+
+#batalla_ataques button{
+    margin: 0 6px;
+    width: 100px;
+}
+
+#combate{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    overflow-y: scroll;
+    scroll-snap-align:start;
+    grid-column: 1/2;
+    grid-row: 1/2;
+    padding: 10px 0 0 0;
+    background-color: cadetblue;
+    border-radius: 20px 0 0 0;
+}
+
+/*
+ *  SCROLL BARR
+ */
+
+#combate::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+#combate::-webkit-scrollbar
+{
+    width: 6px;
+    background-color: #F5F5F5;
+}
+
+#combate::-webkit-scrollbar-thumb
+{
+    background-color: #000000;
+}
+
+
+#combate p{
+    background-color: antiquewhite;
+    display: block;
+    height: 50px;
+    width: 80%;
+}
+
+#endgame{
+    justify-content: center;
+    margin: 20px;
 }

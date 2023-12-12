@@ -37,17 +37,20 @@
     </section>
 
     <section id="info_battle">
-        <h2>Elige tu Ataque</h2>
-        <p>Tu pokemon <span id="spanplayer">_</span> tiene <span id="player_vidas">3</span> vidas</p>
-        <p>El Pokemon enemigo <span id="spanpc">_</span> tiene <span id="pc_vidas">3</span> vidas</p>
-        <label>
-            <button id="atack_1" name="ataque 1">Ataque1</button>
-            <button id="atack_2" name="ataque 2">Ataque2</button>
-            <button id="atack_3" name="ataque 3">Ataque3</button>
-        </label>
+        <h2>¡Combate!</h2>
+        <div class="arenaBatalla">
+            <div id="batalla_visual">
+                <p>Tu pokemon <span id="spanplayer">_</span> tiene <span id="player_vidas">3</span> vidas</p>
+                <p>El Pokemon enemigo <span id="spanpc">_</span> tiene <span id="pc_vidas">3</span> vidas</p>
+            </div>
+            <div id="batalla_ataques">
+                <button id="atack_1" name="ataque 1">Ataque1</button>
+                <button id="atack_2" name="ataque 2">Ataque2</button>
+                <button id="atack_3" name="ataque 3">Ataque3</button>
+            </div>
+            <div id="combate"></div>
+        </div>
     </section>
-
-    <section id="combate"></section>
 
     <section id="endgame">
         <button id="btn_reset">Reiniciar Partida</button>

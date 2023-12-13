@@ -158,7 +158,7 @@ body {
     }
 }
 
-#confirm{
+.botonConfirmar{
     padding: 10px 25px;
     background-color: #ffe600;
     border: solid 3px rgb(85, 67, 245);
@@ -169,7 +169,7 @@ body {
     transition-duration: 50ms;
 }
 
-#confirm:hover{
+.botonConfirmar:hover{
     background-color: #ffffff;
     color: rgb(85, 67, 245);
     transform: scale(105%);
@@ -183,6 +183,7 @@ body {
 .arenaBatalla{
     display: grid;
     width: 85%;
+    max-width: 960px;
     height: 50vh;
     margin: 0 auto;
     grid-template-columns: 40% 60%;
@@ -193,10 +194,19 @@ body {
     grid-column: 2/3;
     grid-row: 1/3;
     box-sizing: border-box;
+    padding: 20px;
     background-image: url("../resources/bg_batalla.png");
     background-size: cover;
     border: solid 3px black;
     border-radius: 0 20px 20px 0;
+}
+
+#batalla_visual p{
+    box-sizing: border-box;
+    margin: 0 0 10px 0;
+    padding: 15px 10px;
+    background-color: #F5F5F5;
+    border-radius: 10px;
 }
 
 #batalla_ataques{
@@ -248,10 +258,6 @@ body {
     border-radius: 20px 0 0 0;
 }
 
-/*
- *  SCROLL BARR
- */
-
 #combate::-webkit-scrollbar-track
 {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -260,7 +266,7 @@ body {
 
 #combate::-webkit-scrollbar
 {
-    width: 6px;
+    width: 10px;
     background-color: #F5F5F5;
 }
 
@@ -285,10 +291,12 @@ body {
 }
 
 #degCombate{
+    z-index: 2;
     display: none;
     position: absolute;
-    width: calc(85%/2.5);
-    height: calc(50vh/1.44);
+    width: calc(85%/2.6);
+    max-width: 372px;
+    height: calc((50vh/1.44));
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.815) 0%, rgba(255, 255, 255, 0) 40%);
     animation-name: degCombatAnima;
     animation-duration: 1000ms;
@@ -319,3 +327,4 @@ body {
     justify-content: center;
     margin: 20px;
 }
+

@@ -27,7 +27,7 @@ input{
 }
 
 body {
-    background-image: url("../resources/background.png");
+    background-image: url("http://drive.google.com/uc?export=view&id=1UVh-cDAE2rfE8d_Ha4paB5Qe74C0ACPg");
     background-size: auto 100vh;
     font-family: 'Hedvig Letters Sans', sans-serif;
 }
@@ -195,7 +195,7 @@ body {
     grid-row: 1/3;
     box-sizing: border-box;
     padding: 20px;
-    background-image: url("../resources/bg_batalla.png");
+    background-image: url("http://drive.google.com/uc?export=view&id=1UK1Sd4dfone6DjLzHp8EAw6ej9Z97Suo");
     background-size: cover;
     border: solid 3px black;
     border-radius: 0 20px 20px 0;
@@ -219,7 +219,7 @@ body {
     align-items: center;
     align-items: center;
     box-sizing: border-box;
-    background-image: url("../resources/bg_ataques.png");
+    background-image: url("http://drive.google.com/uc?export=view&id=1NCeOhBtLDkqaHw6iU1Bi8oQfod21o-VQ");
     background-size: cover;
     border: solid 3px black;
     border-radius: 0 0 0 20px;
@@ -251,7 +251,7 @@ body {
     grid-row: 1/2;
     padding: 10px 0 0 0;
     box-sizing: border-box;
-    background-image: url("../resources/bg_historial.png");
+    background-image: url("http://drive.google.com/uc?export=view&id=1vFnEBqSsLmVoYmnzbEROPsNlJybR5oDz");
     background-size: cover;
     background-position: -50px 0px;
     border: solid 3px black;

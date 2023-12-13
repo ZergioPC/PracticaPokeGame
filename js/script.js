@@ -219,14 +219,14 @@ function batalla(){
 
 //Ataques del eneigo
 function enemyAtack(){
-    switch(randNumber(1,4)){
-        case 1:
+    switch(randNumber(0,pokemonPC.ataques.length-1)){
+        case 0:
             ataquePc = -1;
             break;
-        case 2:
+        case 1:
             ataquePc = -2;
             break;
-        case 3:
+        case 2:
             ataquePc = -3;
             break;
     }
@@ -330,20 +330,8 @@ window.addEventListener("load",()=>{
         }
     
         //selecionar pokemon enemigo
-        switch(randNumber(1,4)){
-            case 1:
-                pokemonPC = pokemonList[0];
-                spanPc.innerHTML = pokemonPC.name;
-                break;
-            case 2:
-                pokemonPC = pokemonList[1];
-                spanPc.innerHTML = pokemonPC.name;
-                break;
-            case 3:
-                pokemonPC = pokemonList[2];
-                spanPc.innerHTML = pokemonPC.name;
-                break;
-        }
+        pokemonPC = pokemonList[randNumber(0,pokemonList.length-1)];
+        spanPc.innerHTML = pokemonPC.name;
 
         atk_1.innerHTML = pokemonJugador.ataques[0].name;
         atk_2.innerHTML = pokemonJugador.ataques[1].name;

@@ -216,9 +216,20 @@ body {
 }
 
 #batalla_ataques button{
-    margin: 0 6px;
-    width: 100px;
+    margin: 3px 6px;
+    width: 200px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    color: #000000;
+    transition-duration: 100ms;
 }
+
+#batalla_ataques button:hover{
+    background-color: #000000;
+    color: #ffffff;
+    transform: scale(105%);
+}
+
 
 #combate{
     display: flex;
@@ -244,7 +255,7 @@ body {
 #combate::-webkit-scrollbar-track
 {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    background-color: #F5F5F5;
+    background-color: #000000;
 }
 
 #combate::-webkit-scrollbar
@@ -255,15 +266,53 @@ body {
 
 #combate::-webkit-scrollbar-thumb
 {
-    background-color: #000000;
+    background-color: #ffffff;
 }
 
 
 #combate p{
-    background-color: antiquewhite;
     display: block;
-    height: 50px;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    height: auto;
     width: 80%;
+    background-color: #ffffff;
+    backdrop-filter: blur(3px);
+    border-radius: 10px;
+    animation-name: combatDialogo;
+    animation-duration: 500ms;
+}
+
+#degCombate{
+    display: none;
+    position: absolute;
+    width: calc(85%/2.5);
+    height: calc(50vh/1.44);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.815) 0%, rgba(255, 255, 255, 0) 40%);
+    animation-name: degCombatAnima;
+    animation-duration: 1000ms;
+}
+
+@keyframes combatDialogo {
+    0%{
+        transform: scale(0%);
+    }
+    50%{
+        transform: scale(110%);
+    }
+    100%{
+        transform: scale(100%);
+    }
+}
+
+@keyframes degCombatAnima {
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
 }
 
 #endgame{

@@ -1,6 +1,8 @@
 //variables globales
 let gameOver = false;
 let battleWiner;
+let historyInfoDeg = 0;
+let cssDegradadoHistorial = document.getElementById("degCombate");
 
 //variables del jugador
 let pokemon1 = document.getElementById("poke1");
@@ -221,7 +223,6 @@ function batalla(){
         battleWiner = 2;
         console.log("perdiste")
     }
-
 }
 
 //Ataques del eneigo
@@ -239,6 +240,16 @@ function enemyAtack(){
     }
     console.log("PC: "+ataquePc);
     console.log("Player: "+ataqueJugador);
+    degradadoHistorial();
+}
+
+// Degradado del Historial
+function degradadoHistorial(){
+    if(historyInfoDeg < 2){
+        historyInfoDeg = historyInfoDeg + 1;
+    }else if(historyInfoDeg == 2){
+        cssDegradadoHistorial.style.display = "block";
+    }
 }
 
 //Ataques del Jugador

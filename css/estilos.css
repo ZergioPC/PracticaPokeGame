@@ -323,6 +323,16 @@ body {
     }
 }
 
+.hst_player{
+    font-weight: bolder;
+    color: blue;
+}
+
+.hst_pc{
+    font-weight: bolder;
+    color: red;
+}
+
 #endgame{
     justify-content: center;
     margin: 20px;

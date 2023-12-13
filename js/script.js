@@ -4,6 +4,9 @@ let battleWiner;
 let historyInfoDeg = 0;
 let pokemonList = [];
 
+let pokemonJugador;
+let pokemonPC;
+
 //variables de seleccion de jugador
 const containerSelPlayer = document.getElementById("tarjetContainer");
 
@@ -120,25 +123,25 @@ function historiaCombate(){
     }else{
         switch(ataqueJugador){
             case 1:
-                auxAtkPlayer = "Ataque 1"
+                auxAtkPlayer = pokemonJugador.ataques[0].name;
                 break;
             case 2:
-                auxAtkPlayer = "Ataque 2"
+                auxAtkPlayer = pokemonJugador.ataques[1].name;
                 break;
             case 3:
-                auxAtkPlayer = "Ataque 3"
+                auxAtkPlayer = pokemonJugador.ataques[2].name;
                 break;
         }
     
         switch(ataquePc){
             case -1:
-                auxAtkPc = "Ataque 1"
+                auxAtkPc = pokemonPC.ataques[0].name;
                 break;
             case -2:
-                auxAtkPc = "Ataque 2"
+                auxAtkPc = pokemonPC.ataques[1].name;
                 break;
             case -3:
-                auxAtkPc = "Ataque 3"
+                auxAtkPc = pokemonPC.ataques[2].name;
                 break;
         }
     
@@ -154,7 +157,7 @@ function historiaCombate(){
                 break;
         }
     
-        parrafo.innerHTML = "Usaste ataque "+auxAtkPlayer+"\rEnemigo uso "+auxAtkPc+". "+auxWiner;
+        parrafo.innerHTML = `Usaste <span class="hst_player">`+auxAtkPlayer+`</span><br>Enemigo uso <span class="hst_pc">`+auxAtkPc+`</span><br>`+auxWiner;
         historial.appendChild(parrafo);
     }
 }
@@ -308,15 +311,18 @@ window.addEventListener("load",()=>{
     
         //jugador
         if(pokemon1.checked){
-            spanPlayer.innerHTML = "Pokemon1";
+            pokemonJugador = pokemonList[0];
+            spanPlayer.innerHTML = pokemonJugador.name;
             sectionBatalla.style.display = "flex";
             sectionSelPokemon.style.display = "none";
         }else if(pokemon2.checked){
-            spanPlayer.innerHTML = "Pokemon2";
+            pokemonJugador = pokemonList[1];
+            spanPlayer.innerHTML = pokemonJugador.name;
             sectionBatalla.style.display = "flex";
             sectionSelPokemon.style.display = "none";
         }else if(pokemon3.checked){
-            spanPlayer.innerHTML = "Pokemon3";
+            pokemonJugador = pokemonList[2];
+            spanPlayer.innerHTML = pokemonJugador.name;
             sectionBatalla.style.display = "flex";
             sectionSelPokemon.style.display = "none";
         }else{
@@ -326,15 +332,22 @@ window.addEventListener("load",()=>{
         //selecionar pokemon enemigo
         switch(randNumber(1,4)){
             case 1:
-                spanPc.innerHTML = "Pokemon1";
+                pokemonPC = pokemonList[0];
+                spanPc.innerHTML = pokemonPC.name;
                 break;
             case 2:
-                spanPc.innerHTML = "Pokemon2";
+                pokemonPC = pokemonList[1];
+                spanPc.innerHTML = pokemonPC.name;
                 break;
             case 3:
-                spanPc.innerHTML = "Pokemon3";
+                pokemonPC = pokemonList[2];
+                spanPc.innerHTML = pokemonPC.name;
                 break;
         }
+
+        atk_1.innerHTML = pokemonJugador.ataques[0].name;
+        atk_2.innerHTML = pokemonJugador.ataques[1].name;
+        atk_3.innerHTML = pokemonJugador.ataques[2].name;
     }
 
     btn_confirm.addEventListener("click",selPokemon);

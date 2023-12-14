@@ -345,8 +345,6 @@ body {
 }
 
 #mapa_tablero{
-    width: 600px;
-    height: 300px;
     border:solid 2px black;
 }
 .mapa_botones{

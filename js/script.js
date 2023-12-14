@@ -46,7 +46,12 @@ let parrafo;
 
 //Variables del mundo abierto
 let mapaTablero = document.getElementById("mapa_tablero");
+    mapaTablero.width = 630;
+    mapaTablero.height = 387;
+
 let mapa = mapaTablero.getContext("2d");
+let canvaBackground = new Image();
+    canvaBackground.src = "http://drive.google.com/uc?export=view&id=1bs2Gp1hgBVsHOprhvGNL0cfBTXuDbjz1";
 
 //Clase para Pokemon
 class Pokemon{
@@ -290,11 +295,14 @@ function newGame(){
 }
 
 //Mundo Abierto
-function moverPersonaje(){
+function drawCanvas(){
     pokemonJugador.cordX = pokemonJugador.cordX + pokemonJugador.velX;
     pokemonJugador.cordy = pokemonJugador.cordy + pokemonJugador.velY;
 
     mapa.clearRect(0,0,mapaTablero.width,mapaTablero.height);
+    
+    mapa.drawImage(canvaBackground,0,0,mapaTablero.width,mapaTablero.height);
+    
     mapa.drawImage(
         pokemonJugador.canvas,
         pokemonJugador.cordX,
@@ -325,6 +333,37 @@ function mapaMover(e){
             break;
     }
 };
+
+function auxSelPokemon(){
+    spanPlayer.innerHTML = pokemonJugador.name;
+    //sectionBatalla.style.display = "flex";
+
+    sectionMapa.style.display="flex";
+    drawCanvas();
+    
+    sectionSelPokemon.style.display = "none";
+    intervalTimer = setInterval(drawCanvas, 60);
+
+    window.addEventListener("keydown",(e)=>{
+        switch(e.key){
+            case "ArrowUp":
+                mapaMover(2);
+                break;
+            case "ArrowDown":
+                mapaMover(3);
+                break;
+            case "ArrowLeft":
+                mapaMover(1);
+                break;
+            case "ArrowRight":
+                mapaMover(0);
+                break;
+        }
+    });
+
+    window.addEventListener("keyup",mapaStop);
+}
+
 
 //Inicialización del Juego
 window.addEventListener("load",()=>{
@@ -367,28 +406,13 @@ window.addEventListener("load",()=>{
         //jugador
         if(pokemon1.checked){
             pokemonJugador = pokemonList[0];
-            spanPlayer.innerHTML = pokemonJugador.name;
-            //sectionBatalla.style.display = "flex";
-            sectionMapa.style.display="flex";
-            moverPersonaje();
-            sectionSelPokemon.style.display = "none";
-            intervalTimer = setInterval(moverPersonaje, 60);
+            auxSelPokemon();
         }else if(pokemon2.checked){
             pokemonJugador = pokemonList[1];
-            spanPlayer.innerHTML = pokemonJugador.name;
-            //sectionBatalla.style.display = "flex";
-            sectionMapa.style.display="flex";
-            moverPersonaje();
-            sectionSelPokemon.style.display = "none";
-            intervalTimer = setInterval(moverPersonaje, 60);
+            auxSelPokemon();
         }else if(pokemon3.checked){
             pokemonJugador = pokemonList[2];
-            spanPlayer.innerHTML = pokemonJugador.name;
-            //sectionBatalla.style.display = "flex";
-            sectionMapa.style.display="flex";
-            moverPersonaje();
-            sectionSelPokemon.style.display = "none";
-            intervalTimer = setInterval(moverPersonaje, 60);
+            auxSelPokemon();
         }else{
             alert("no hay pokemon seleccionado");
         }

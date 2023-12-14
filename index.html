@@ -21,6 +21,17 @@
         <button id="confirm" class="botonConfirmar">Seleccionar</button>
     </section>
 
+    <section id="mapa">
+        <h2>Recorre la ciudad</h2>
+        <canvas id="mapa_tablero"></canvas>
+        <div class="mapa_botones">
+            <button onclick="mapaMover(0)" id="mapa_btR">→</button>
+            <button onclick="mapaMover(1)" id="mapa_btL">←</button>
+            <button onclick="mapaMover(2)" id="mapa_btUp">↑</button>
+            <button onclick="mapaMover(3)" id="mapa_btDwn">↓</button>
+        </div>
+    </section>
+
     <section id="info_battle">
         <h2>¡Combate!</h2>
         <div class="arenaBatalla">

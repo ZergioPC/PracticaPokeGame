@@ -13,6 +13,7 @@ const containerSelPlayer = document.getElementById("tarjetContainer");
 //variables de Secciones
 const sectionBatalla = document.getElementById("info_battle");
 const sectionSelPokemon = document.getElementById("selec_player");
+const sectionMapa = document.getElementById("mapa");
 const sectionReset = document.getElementById("endgame");
 
 //variables info battle
@@ -41,6 +42,10 @@ let ataquePc = 0;
 const historial = document.getElementById("combate");
 let parrafo;
 
+//Variables del mundo abierto
+let mapaTablero = document.getElementById("mapa_tablero");
+let mapa = mapaTablero.getContext("2d");
+
 //Clase para Pokemon
 class Pokemon{
     constructor(name,img,idImput,idTarj){
@@ -49,6 +54,12 @@ class Pokemon{
         this.idImput = idImput;
         this.idTarj = idTarj;
         this.ataques = [];
+        this.cordX = 30;
+        this.cordy = 30;
+        this.width = 100;
+        this.height = 100;
+        this.canvas = new Image();
+        this.canvas.src = img;
     }
 }
 
@@ -95,6 +106,7 @@ const cssDegradadoHistorial = document.getElementById("degCombate");
 function hideUX(){
     sectionBatalla.style.display = "none";
     sectionReset.style.display = "none";
+    sectionMapa.style.display ="none";
 }
 
 //funcion randomizador
@@ -273,6 +285,32 @@ function newGame(){
     location.reload();
 }
 
+//Mundo Abierto
+function mundoAbierto(){
+    mapa.clearRect(0,0,mapaTablero.width,mapaTablero.height);
+    mapa.drawImage(poke_pikachu.canvas,poke_pikachu.cordX,poke_pikachu.cordy,poke_pikachu.width,poke_pikachu.height);
+}
+
+
+function mapaMover(e){
+    switch(e){
+        case 0:
+            poke_pikachu.cordX = poke_pikachu.cordX + 5;
+            break;
+        case 1:
+            poke_pikachu.cordX = poke_pikachu.cordX + -5;
+            break;
+        case 2:
+            poke_pikachu.cordy = poke_pikachu.cordy + -5;
+            break;
+        case 3:
+            poke_pikachu.cordy = poke_pikachu.cordy + 5;
+            break;
+    }
+    mundoAbierto();
+};
+
+//Inicialización del Juego
 window.addEventListener("load",()=>{
     hideUX();
 
@@ -313,17 +351,23 @@ window.addEventListener("load",()=>{
         if(pokemon1.checked){
             pokemonJugador = pokemonList[0];
             spanPlayer.innerHTML = pokemonJugador.name;
-            sectionBatalla.style.display = "flex";
+            //sectionBatalla.style.display = "flex";
+            sectionMapa.style.display="flex";
+            mundoAbierto();
             sectionSelPokemon.style.display = "none";
         }else if(pokemon2.checked){
             pokemonJugador = pokemonList[1];
             spanPlayer.innerHTML = pokemonJugador.name;
-            sectionBatalla.style.display = "flex";
+            //sectionBatalla.style.display = "flex";
+            sectionMapa.style.display="flex";
+            mundoAbierto();
             sectionSelPokemon.style.display = "none";
         }else if(pokemon3.checked){
             pokemonJugador = pokemonList[2];
             spanPlayer.innerHTML = pokemonJugador.name;
-            sectionBatalla.style.display = "flex";
+            //sectionBatalla.style.display = "flex";
+            sectionMapa.style.display="flex";
+            mundoAbierto();
             sectionSelPokemon.style.display = "none";
         }else{
             alert("no hay pokemon seleccionado");

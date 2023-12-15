@@ -101,12 +101,12 @@ body {
 
 .tarjet_pokemon img{
     image-rendering: pixelated;
-    transform: scale(130%);
+    transform: scale(120%);
 }
 
 .tarjet_pokemon_check img{
     image-rendering: pixelated;
-    transform: scale(130%);
+    transform: scale(120%);
     animation-name: selected;
     animation-duration: 1500ms;
     animation-iteration-count: infinite;
@@ -114,22 +114,22 @@ body {
 
 @keyframes selected {
     0%{
-        transform: translateY(20px) scale(130%);
+        transform: translateY(20px) scale(120%);
     }
     15%{
-        transform: translateY(30px) scalex(140%) scaleY(110%);
+        transform: translateY(40px) scalex(130%) scaleY(100%);
     }
     35%{
-        transform: translateY(-40px) scaley(140%) scaleX(110%);
+        transform: translateY(-30px) scaley(130%) scaleX(100%);
     }
     55%{
-        transform: translateY(30px) scalex(140%) scaleY(110%);
+        transform: translateY(30px) scalex(130%) scaleY(100%);
     }
     70%{
-        transform: translateY(20px) scale(130%);
+        transform: translateY(20px) scale(120%);
     }
     100%{
-        transform: translateY(20px) scale(130%);
+        transform: translateY(20px) scale(120%);
     }
 
 }

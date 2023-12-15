@@ -68,6 +68,9 @@ let mapa = mapaTablero.getContext("2d");
 let canvaBackground = new Image();
     canvaBackground.src = "http://drive.google.com/uc?export=view&id=1bs2Gp1hgBVsHOprhvGNL0cfBTXuDbjz1";
 
+let canvaBackgroundFront = new Image();
+    canvaBackgroundFront.src = "http://drive.google.com/uc?export=view&id=1bs2Gp1hgBVsHOprhvGNL0cfBTXuDbjz1";
+
 //Clase para Pokemon
 class Pokemon{
     constructor(name,img){
@@ -128,7 +131,57 @@ poke_jigglypuff.ataques.push(
     {name:"Rizo defensa",id:"atack_4"}
 );
 
-pokemonList.push(poke_pikachu,poke_combusken,poke_duskull,poke_jigglypuff);
+let poke_psyduck = new Pokemon("Psyduck","http://drive.google.com/uc?export=view&id=1yyXY-3Me5VF7nWZOD6lZPwYMmn7SjxF_");
+poke_psyduck.ataques.push(
+    {name:"Amnesia",id:"atack_1"},
+    {name:"Arañazo",id:"atack_2"},
+    {name:"Confusión",id:"atack_3"},
+    {name:"Cabezazo zen",id:"atack_4"}
+);
+
+let poke_gyarados = new Pokemon("Gyarados","http://drive.google.com/uc?export=view&id=11WySTOHq75-bn_YyxFxWU7nsd0ZdUwjQ");
+poke_gyarados.ataques.push(
+    {name:"Amnesia",id:"atack_1"},
+    {name:"Arañazo",id:"atack_2"},
+    {name:"Confusión",id:"atack_3"},
+    {name:"Cabezazo zen",id:"atack_4"}
+);
+
+let poke_dragonite = new Pokemon("Dragonite","http://drive.google.com/uc?export=view&id=1uvojy-ildW7Q5nM9HyMYQU2xIK7JcsHU");
+poke_dragonite.ataques.push(
+    {name:"Lanzallamas",id:"atack_1"},
+    {name:"Danza dragón",id:"atack_2"},
+    {name:"Puño dinámico",id:"atack_3"},
+    {name:"Onda trueno",id:"atack_4"}
+);
+
+let poke_mewtwo = new Pokemon("Mewtwo","http://drive.google.com/uc?export=view&id=1DURyLs4e1XDqLJbTHpQPPRV4G1zsnwiB");
+poke_mewtwo.ataques.push(
+    {name:"Esfera aural",id:"atack_1"},
+    {name:"Psicocorte",id:"atack_2"},
+    {name:"Meteoros",id:"atack_3"},
+    {name:"Premonición",id:"atack_4"}
+);
+
+let poke_eevee = new Pokemon("Eevee","http://drive.google.com/uc?export=view&id=1lxrs6cIJKZeSyWRvzmsPHrZ8YwUOh9PB");
+poke_eevee.ataques.push(
+    {name:"Mordisco",id:"atack_1"},
+    {name:"Látigo",id:"atack_2"},
+    {name:"Ojitos tiernos",id:"atack_3"},
+    {name:"Doble filo",id:"atack_4"}
+);
+
+pokemonList.push(
+    poke_pikachu,
+    poke_combusken,
+    poke_duskull,
+    poke_jigglypuff,
+    poke_psyduck,
+    poke_gyarados,
+    poke_dragonite,
+    poke_mewtwo,
+    poke_eevee
+);
 
 function auxSelPokemonHtml(x,i){
     let htmlDialog = `
@@ -358,6 +411,8 @@ function drawCanvas(){
     mapa.drawImage(canvaBackground,0,0,mapaTablero.width,mapaTablero.height);
     
     pokemonJugador.drawPokemon();
+
+    //mapa.drawImage(canvaBackgroundFront,0,0,mapaTablero.width,mapaTablero.height);
 }
 
 function mapaStop(){
@@ -430,9 +485,16 @@ function selPokemon(){
     }
 
     //selecionar pokemones enemigos
-    pokemonPC = pokemonList[randNumber(0,pokemonList.length-1)];
-    pokemonPC2 = pokemonList[randNumber(0,pokemonList.length-1)];
-    pokemonPC3 = pokemonList[randNumber(0,pokemonList.length-1)];
+    pokemonPC = pokemonList[randNumber(0,pokemonList.length)];
+
+    do{
+        pokemonPC2 = pokemonList[randNumber(0,pokemonList.length)];    
+    }while(pokemonPC2 == pokemonPC);
+
+    do{
+        pokemonPC3 = pokemonList[randNumber(0,pokemonList.length)];
+    }while(pokemonPC3 == pokemonPC2 || pokemonPC3 == pokemonPC);
+
 
     spanPc.innerHTML = pokemonPC.name;
 

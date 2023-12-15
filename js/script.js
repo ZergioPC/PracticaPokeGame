@@ -357,6 +357,9 @@ function enemyAtack(){
         case 2:
             ataquePc = -3;
             break;
+        case 3:
+                ataquePc = -4;
+                break;
     }
     console.log("PC: "+ataquePc);
     console.log("Player: "+ataqueJugador);
@@ -397,6 +400,14 @@ function playerAtack3(){
     historial.scrollBy(0,-innerHeight);
 }
 
+function playerAtack4(){
+    ataqueJugador = 4;
+    batalla();
+    enemyAtack();
+    historiaCombate();
+    historial.scrollBy(0,-innerHeight);
+}
+
 function newGame(){
     location.reload();
 }
@@ -411,6 +422,10 @@ function drawCanvas(){
     mapa.drawImage(canvaBackground,0,0,mapaTablero.width,mapaTablero.height);
     
     pokemonJugador.drawPokemon();
+
+    pokemonPC.drawPokemon();
+    pokemonPC2.drawPokemon();
+    pokemonPC3.drawPokemon();
 
     //mapa.drawImage(canvaBackgroundFront,0,0,mapaTablero.width,mapaTablero.height);
 }
@@ -467,40 +482,82 @@ function auxSelPokemon(){
     window.addEventListener("keyup",mapaStop);
 }
 
+function posEnemyMapa(x,min,max){
+    switch(randNumber(min,max)){
+        case 0:
+            x.cordX = 270;
+            x.cordy = 150;
+            break;
+        case 1:
+            x.cordX = 510;
+            x.cordy = 150;
+            break;
+        case 2:
+            x.cordX = 270;
+            x.cordy =50;
+            break;
+        case 3:
+            x.cordX = 270;
+            x.cordy =260;
+            break;
+        case 4:
+            x.cordX = 30;
+            x.cordy =280;
+            break;
+        case 5:
+            x.cordX = 270;
+            x.cordy =280;
+            break;
+    }
+}
+
 //CSS seleccion de pokemon
 
-function selPokemon(){
-    //jugador
-    if(pokemon1.checked){
-        pokemonJugador = pokemonList[optionPokemon1];
-        auxSelPokemon();
-    }else if(pokemon2.checked){
-        pokemonJugador = pokemonList[optionPokemon2];
-        auxSelPokemon();
-    }else if(pokemon3.checked){
-        pokemonJugador = pokemonList[optionPokemon3];
-        auxSelPokemon();
-    }else{
-        alert("no hay pokemon seleccionado");
-    }
-
-    //selecionar pokemones enemigos
-    pokemonPC = pokemonList[randNumber(0,pokemonList.length)];
+function auxSelPokemonEnemigo(){
+    
+    do{
+        pokemonPC = pokemonList[randNumber(0,pokemonList.length)];
+    }while(pokemonPC == pokemonJugador);
 
     do{
         pokemonPC2 = pokemonList[randNumber(0,pokemonList.length)];    
-    }while(pokemonPC2 == pokemonPC);
+    }while(pokemonPC2 == pokemonPC || pokemonPC2 == pokemonJugador);
 
     do{
         pokemonPC3 = pokemonList[randNumber(0,pokemonList.length)];
-    }while(pokemonPC3 == pokemonPC2 || pokemonPC3 == pokemonPC);
+    }while(pokemonPC3 == pokemonPC2 || pokemonPC3 == pokemonPC || pokemonPC3 == pokemonJugador);
 
+    posEnemyMapa(pokemonPC,0,2);
+    posEnemyMapa(pokemonPC2,2,3);
+    posEnemyMapa(pokemonPC3,4,6);
 
     spanPc.innerHTML = pokemonPC.name;
+}
+
+function selPokemon(){
+    //selecionar pokemones enemigos
+
+    //jugador
+    if(pokemon1.checked){
+        pokemonJugador = pokemonList[optionPokemon1];
+        auxSelPokemonEnemigo();
+        auxSelPokemon();
+    }else if(pokemon2.checked){
+        pokemonJugador = pokemonList[optionPokemon2];
+        auxSelPokemonEnemigo();
+        auxSelPokemon();
+    }else if(pokemon3.checked){
+        pokemonJugador = pokemonList[optionPokemon3];
+        auxSelPokemonEnemigo();
+        auxSelPokemon();
+    }else{
+        alert("no hay pokemon seleccionado");
+    }    
 
     atk_1.innerHTML = pokemonJugador.ataques[0].name;
     atk_2.innerHTML = pokemonJugador.ataques[1].name;
     atk_3.innerHTML = pokemonJugador.ataques[2].name;
+    
 }
 
 //Inicialización del Juego

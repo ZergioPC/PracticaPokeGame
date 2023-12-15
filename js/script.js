@@ -6,11 +6,26 @@ let pokemonList = [];
 
 let pokemonJugador;
 let pokemonPC;
+let pokemonPC2;
+let pokemonPC3;
+
+
+let optionPokemon1; 
+let optionPokemon2; 
+let optionPokemon3;
 
 let intervalTimer;
 
 //variables de seleccion de jugador
 const containerSelPlayer = document.getElementById("tarjetContainer");
+
+let pokemon1;
+let pokemon2;
+let pokemon3;
+
+let cssPoke1;
+let cssPoke2;
+let cssPoke3;
 
 //variables de Secciones
 const sectionBatalla = document.getElementById("info_battle");
@@ -55,11 +70,9 @@ let canvaBackground = new Image();
 
 //Clase para Pokemon
 class Pokemon{
-    constructor(name,img,idImput,idTarj){
+    constructor(name,img){
         this.img = img;
         this.name = name;
-        this.idImput = idImput;
-        this.idTarj = idTarj;
         this.ataques = [];
         this.cordX = 30;
         this.cordy = 30;
@@ -70,43 +83,84 @@ class Pokemon{
         this.velX = 0;
         this.velY = 0;
     }
+
+    drawPokemon(){
+        mapa.drawImage(
+            this.canvas,
+            this.cordX,
+            this.cordy,
+            this.width,
+            this.height
+        );
+    }
 }
 
 //Objetos Pokemon
-let poke_pikachu = new Pokemon("Pikachu","http://drive.google.com/uc?export=view&id=1Uk1tlgelpchcb-3_b8lVxUPeWa_wd4l4","poke1","tar_poke1");
+let poke_pikachu = new Pokemon("Pikachu","http://drive.google.com/uc?export=view&id=1Uk1tlgelpchcb-3_b8lVxUPeWa_wd4l4");
 poke_pikachu.ataques.push(
     {name:"Impactrueno",id:"atack_1"},
     {name:"Ataque rápido",id:"atack_2"},
-    {name:"Chispazo",id:"atack_3"}
+    {name:"Chispazo",id:"atack_3"},
+    {name:"Puño trueno",id:"atack_4"}
 );
 
-let poke_combusken = new Pokemon("Combusken","http://drive.google.com/uc?export=view&id=1AeLeu1r0eJUS_XpstRRKs9NXN9cVwCJ2","poke2","tar_poke2");
+let poke_combusken = new Pokemon("Combusken","http://drive.google.com/uc?export=view&id=1AeLeu1r0eJUS_XpstRRKs9NXN9cVwCJ2");
 poke_combusken.ataques.push(
     {name:"Lanzallamas",id:"atack_1"},
     {name:"Doble patada",id:"atack_2"},
-    {name:"Envite ígneo",id:"atack_3"}
+    {name:"Envite ígneo",id:"atack_3"},
+    {name:"Patada ígnea",id:"atack_4"}
 );
 
-let poke_duskull = new Pokemon("Duskull","http://drive.google.com/uc?export=view&id=1qQEBXeITKFibSrMB20Eyuo_VGUumVJC8","poke3","tar_poke3");
+let poke_duskull = new Pokemon("Duskull","http://drive.google.com/uc?export=view&id=1qQEBXeITKFibSrMB20Eyuo_VGUumVJC8");
 poke_duskull.ataques.push(
     {name:"Bola sombra",id:"atack_1"},
     {name:"Impresionar",id:"atack_2"},
-    {name:"Fuego fatuo",id:"atack_3"}
+    {name:"Fuego fatuo",id:"atack_3"},
+    {name:"Tinieblas",id:"atack_4"}
 );
 
-pokemonList.push(poke_pikachu,poke_combusken,poke_duskull);
+let poke_jigglypuff = new Pokemon("Jigglypuff","http://drive.google.com/uc?export=view&id=1SsfTQsIB54HNKqwaKsxwHoUjRiqAFw9D");
+poke_jigglypuff.ataques.push(
+    {name:"Encanto",id:"atack_1"},
+    {name:"Golpe cuerpo",id:"atack_2"},
+    {name:"Voz cautivadora",id:"atack_3"},
+    {name:"Rizo defensa",id:"atack_4"}
+);
 
-pokemonList.forEach((Pokemon)=>{
+pokemonList.push(poke_pikachu,poke_combusken,poke_duskull,poke_jigglypuff);
+
+function auxSelPokemonHtml(x,i){
     let htmlDialog = `
-    <label for="${Pokemon.idImput}" class="tarjet_pokemon" id="${Pokemon.idTarj}">
-        <p>${Pokemon.name}</p>
-        <img src="${Pokemon.img}" alt="${Pokemon.name}">
+    <label for="poke${i}" class="tarjet_pokemon" id="tar_poke${i}">
+        <p>${pokemonList[x].name}</p>
+        <img src="${pokemonList[x].img}" alt="${pokemonList[x].name}">
     </label>
-    <input id="${Pokemon.idImput}" type="radio" name="poke_player"></input>
+    <input id="poke${i}" type="radio" name="poke_player"></input>
     `;
 
     containerSelPlayer.innerHTML += htmlDialog;
-});
+} 
+
+function showPokemonCSS(){
+    
+    optionPokemon1 = randNumber(0,pokemonList.length);
+
+    do{
+        optionPokemon2 = randNumber(0,pokemonList.length);
+    }
+    while(optionPokemon2 == optionPokemon1);
+
+    do{
+        optionPokemon3 = randNumber(0,pokemonList.length);
+    }
+    while(optionPokemon3 == optionPokemon1 || optionPokemon3 == optionPokemon2);
+
+    auxSelPokemonHtml(optionPokemon1,1);
+    auxSelPokemonHtml(optionPokemon2,2);
+    auxSelPokemonHtml(optionPokemon3,3);
+}
+
 
 //Variables de CSS - Batalla Pokemon
 const cssDegradadoHistorial = document.getElementById("degCombate");
@@ -303,13 +357,7 @@ function drawCanvas(){
     
     mapa.drawImage(canvaBackground,0,0,mapaTablero.width,mapaTablero.height);
     
-    mapa.drawImage(
-        pokemonJugador.canvas,
-        pokemonJugador.cordX,
-        pokemonJugador.cordy,
-        pokemonJugador.width,
-        pokemonJugador.height
-    );
+    pokemonJugador.drawPokemon();
 }
 
 function mapaStop(){
@@ -364,67 +412,68 @@ function auxSelPokemon(){
     window.addEventListener("keyup",mapaStop);
 }
 
+//CSS seleccion de pokemon
+
+function selPokemon(){
+    //jugador
+    if(pokemon1.checked){
+        pokemonJugador = pokemonList[optionPokemon1];
+        auxSelPokemon();
+    }else if(pokemon2.checked){
+        pokemonJugador = pokemonList[optionPokemon2];
+        auxSelPokemon();
+    }else if(pokemon3.checked){
+        pokemonJugador = pokemonList[optionPokemon3];
+        auxSelPokemon();
+    }else{
+        alert("no hay pokemon seleccionado");
+    }
+
+    //selecionar pokemones enemigos
+    pokemonPC = pokemonList[randNumber(0,pokemonList.length-1)];
+    pokemonPC2 = pokemonList[randNumber(0,pokemonList.length-1)];
+    pokemonPC3 = pokemonList[randNumber(0,pokemonList.length-1)];
+
+    spanPc.innerHTML = pokemonPC.name;
+
+    atk_1.innerHTML = pokemonJugador.ataques[0].name;
+    atk_2.innerHTML = pokemonJugador.ataques[1].name;
+    atk_3.innerHTML = pokemonJugador.ataques[2].name;
+}
 
 //Inicialización del Juego
 window.addEventListener("load",()=>{
     hideUX();
+    showPokemonCSS();
 
-    const pokemon1 = document.getElementById("poke1");
-    const pokemon2 = document.getElementById("poke2");
-    const pokemon3 = document.getElementById("poke3");
-
-    const cssPoke1 = document.getElementById("tar_poke1");
-    const cssPoke2 = document.getElementById("tar_poke2");
-    const cssPoke3 = document.getElementById("tar_poke3");
-
-    pokemon1.addEventListener("click",cssSelPokemon)
-    pokemon2.addEventListener("click",cssSelPokemon)
-    pokemon3.addEventListener("click",cssSelPokemon)
-
-    function cssSelPokemon(){
-        if(pokemon1.checked){
-            cssPoke1.setAttribute("class","tarjet_pokemon_check");
-            
-            cssPoke2.setAttribute("class","tarjet_pokemon");
-            cssPoke3.setAttribute("class","tarjet_pokemon");
-        }else if(pokemon2.checked){
-            cssPoke2.setAttribute("class","tarjet_pokemon_check");
+    pokemon1 = document.getElementById("poke1");
+    pokemon2 = document.getElementById("poke2");
+    pokemon3 = document.getElementById("poke3");
     
-            cssPoke1.setAttribute("class","tarjet_pokemon");
-            cssPoke3.setAttribute("class","tarjet_pokemon");
-        }else if(pokemon3.checked){
-            cssPoke3.setAttribute("class","tarjet_pokemon_check");
-    
-            cssPoke1.setAttribute("class","tarjet_pokemon");
-            cssPoke2.setAttribute("class","tarjet_pokemon");
-        }
-    }
+    cssPoke1 = document.getElementById("tar_poke1");
+    cssPoke2 = document.getElementById("tar_poke2");
+    cssPoke3 = document.getElementById("tar_poke3");
 
+    pokemon1.addEventListener("click",()=>{
+        cssPoke1.setAttribute("class","tarjet_pokemon_check");
+        
+        cssPoke2.setAttribute("class","tarjet_pokemon");
+        cssPoke3.setAttribute("class","tarjet_pokemon");
+    });
 
-    function selPokemon(){
-    
-        //jugador
-        if(pokemon1.checked){
-            pokemonJugador = pokemonList[0];
-            auxSelPokemon();
-        }else if(pokemon2.checked){
-            pokemonJugador = pokemonList[1];
-            auxSelPokemon();
-        }else if(pokemon3.checked){
-            pokemonJugador = pokemonList[2];
-            auxSelPokemon();
-        }else{
-            alert("no hay pokemon seleccionado");
-        }
-    
-        //selecionar pokemon enemigo
-        pokemonPC = pokemonList[randNumber(0,pokemonList.length-1)];
-        spanPc.innerHTML = pokemonPC.name;
+    pokemon2.addEventListener("click",()=>{
+        cssPoke2.setAttribute("class","tarjet_pokemon_check");
 
-        atk_1.innerHTML = pokemonJugador.ataques[0].name;
-        atk_2.innerHTML = pokemonJugador.ataques[1].name;
-        atk_3.innerHTML = pokemonJugador.ataques[2].name;
-    }
+        cssPoke1.setAttribute("class","tarjet_pokemon");
+        cssPoke3.setAttribute("class","tarjet_pokemon");
+    });
+
+    pokemon3.addEventListener("click",()=>{
+        cssPoke3.setAttribute("class","tarjet_pokemon_check");
+
+        cssPoke1.setAttribute("class","tarjet_pokemon");
+        cssPoke2.setAttribute("class","tarjet_pokemon");
+    });
 
     btn_confirm.addEventListener("click",selPokemon);
     btn_reset.addEventListener("click",newGame);
@@ -432,4 +481,4 @@ window.addEventListener("load",()=>{
     atk_1.addEventListener("click",playerAtack1)
     atk_2.addEventListener("click",playerAtack2)
     atk_3.addEventListener("click",playerAtack3)
-})
+});

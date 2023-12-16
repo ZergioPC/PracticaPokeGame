@@ -386,7 +386,26 @@ body {
     grid-row: 1/2;
 }
 
+.auxRotar{
+    display: none;
+}
+
 /* Media Querys Generales*/
+
+@media (max-width:625px) {
+    #selec_player{
+        display: none;
+    }
+
+    .auxRotar{
+        display: block;
+        padding: 20px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 2rem;
+        background-color: white;
+    }
+}
 
 @media (max-height: 750px) {
     .mapa_botones{
@@ -469,12 +488,13 @@ body {
 
     #batalla_ataques button{
         margin: 3px 6px;
-        width: 125px;
-        height: 2.5rem;
+        width: auto;
+        height: auto;
         background-color: #ffffff;
         border-radius: 15px;
         color: #000000;
         transition-duration: 100ms;
+        font-size: 3vh;
     }
     #batalla_ataques{
         padding: 0 0;
@@ -501,7 +521,8 @@ body {
 
     #auxH2 h2{
         margin: 0;
-        font-size: 2rem;
+        padding: 5px 10px;
+        font-size: 1.1rem;
     }
 
     #mapa_tablero{

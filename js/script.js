@@ -17,6 +17,10 @@ let optionPokemon3;
 
 let intervalTimer;
 
+//variables aux HTML
+const auxHtmlH2 = document.getElementById("auxH2");
+const auxHtmlL = document.getElementById("auxL");
+
 //variables de seleccion de jugador
 const containerSelPlayer = document.getElementById("tarjetContainer");
 
@@ -482,6 +486,8 @@ function mapaColisionEnemigos(enemy){
     mapaStop();
     sectionBatalla.style.display = "flex";
     sectionMapa.style.display = "none";
+    auxHtmlH2.style.display = "none";
+    auxHtmlL.style.display = "none";
 }
 
 function mapaStop(){

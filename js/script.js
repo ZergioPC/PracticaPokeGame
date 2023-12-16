@@ -8,6 +8,7 @@ let pokemonJugador;
 let pokemonPC;
 let pokemonPC2;
 let pokemonPC3;
+let pokemonEnemigo;
 
 
 let optionPokemon1; 
@@ -50,7 +51,8 @@ let vida_enemigo = 3;
 //variables de ataques
 const atk_1 = document.getElementById("atack_1"); 
 const atk_2 = document.getElementById("atack_2"); 
-const atk_3 = document.getElementById("atack_3"); 
+const atk_3 = document.getElementById("atack_3");
+const atk_4 = document.getElementById("atack_4"); 
 
 let ataqueJugador = 0;
 let ataquePc = 0;
@@ -70,6 +72,11 @@ let canvaBackground = new Image();
 
 let canvaBackgroundFront = new Image();
     canvaBackgroundFront.src = "http://drive.google.com/uc?export=view&id=17OH2oYThgKi2mKufX1sW6P1BDPYuB6qY";
+
+let btnUp;
+let btnDwn;
+let btnL;
+let btnR;
 
 //Clase para Pokemon
 class Pokemon{
@@ -259,17 +266,23 @@ function historiaCombate(){
             case 3:
                 auxAtkPlayer = pokemonJugador.ataques[2].name;
                 break;
+            case 4:
+                auxAtkPlayer = pokemonJugador.ataques[3].name;
+                break;
         }
     
         switch(ataquePc){
             case -1:
-                auxAtkPc = pokemonPC.ataques[0].name;
+                auxAtkPc = pokemonEnemigo.ataques[0].name;
                 break;
             case -2:
-                auxAtkPc = pokemonPC.ataques[1].name;
+                auxAtkPc = pokemonEnemigo.ataques[1].name;
                 break;
             case -3:
-                auxAtkPc = pokemonPC.ataques[2].name;
+                auxAtkPc = pokemonEnemigo.ataques[2].name;
+                break;
+            case -4:
+                auxAtkPc = pokemonEnemigo.ataques[3].name;
                 break;
         }
     
@@ -285,7 +298,7 @@ function historiaCombate(){
                 break;
         }
     
-        parrafo.innerHTML = `Usaste <span class="hst_player">`+auxAtkPlayer+`</span><br>Enemigo uso <span class="hst_pc">`+auxAtkPc+`</span><br>`+auxWiner;
+        parrafo.innerHTML = `Usaste <span class="hst_player">`+auxAtkPlayer+`</span><br>`+pokemonEnemigo.name+` uso <span class="hst_pc">`+auxAtkPc+`</span><br>`+auxWiner;
         historial.appendChild(parrafo);
     }
 }
@@ -295,6 +308,7 @@ function desactivarBotones(){
     atk_1.disabled = true;
     atk_2.disabled = true;
     atk_3.disabled = true;
+    atk_4.disabled = true;
 
     sectionReset.style.display="flex";
 }
@@ -338,10 +352,27 @@ function batalla(){
         saludEnemigo();
         battleWiner = 1;
         console.log("ganaste")
-    }else{
+    }else if(Math.abs(resultado) == 2){
         saludPlayer();
         battleWiner = 2;
         console.log("perdiste")
+    }else{
+        switch(randNumber(0,3)){
+            case 0:
+                console.log("empate");
+                battleWiner = 0;   
+                break;
+            case 1:
+                saludEnemigo();
+                battleWiner = 1;
+                console.log("ganaste")
+                break;
+            case 2:
+                saludPlayer();
+                battleWiner = 2;
+                console.log("perdiste")
+                break;
+        }
     }
 }
 
@@ -358,8 +389,8 @@ function enemyAtack(){
             ataquePc = -3;
             break;
         case 3:
-                ataquePc = -4;
-                break;
+            ataquePc = -4;
+            break;
     }
     console.log("PC: "+ataquePc);
     console.log("Player: "+ataqueJugador);
@@ -446,7 +477,11 @@ function mapaColisionEnemigos(enemy){
         ){
             return;
     }
-        console.log("colision "+enemy.name);
+    pokemonEnemigo = enemy;
+    spanPc.innerHTML = enemy.name;
+    mapaStop();
+    sectionBatalla.style.display = "flex";
+    sectionMapa.style.display = "none";
 }
 
 function mapaStop(){
@@ -477,9 +512,10 @@ function mapaMover(e){
 
 function auxSelPokemon(){
     spanPlayer.innerHTML = pokemonJugador.name;
-    //sectionBatalla.style.display = "flex";
 
     sectionMapa.style.display="flex";
+
+
     drawCanvas();
     
     sectionSelPokemon.style.display = "none";
@@ -553,8 +589,13 @@ function auxSelPokemonEnemigo(){
     posEnemyMapa(pokemonPC,0,2);
     posEnemyMapa(pokemonPC2,2,3);
     posEnemyMapa(pokemonPC3,4,6);
+}
 
-    spanPc.innerHTML = pokemonPC.name;
+function auxSelAtkPC(){
+    atk_1.innerHTML = pokemonJugador.ataques[0].name;
+    atk_2.innerHTML = pokemonJugador.ataques[1].name;
+    atk_3.innerHTML = pokemonJugador.ataques[2].name;
+    atk_4.innerHTML = pokemonJugador.ataques[3].name;
 }
 
 function selPokemon(){
@@ -565,23 +606,20 @@ function selPokemon(){
         pokemonJugador = pokemonList[optionPokemon1];
         auxSelPokemonEnemigo();
         auxSelPokemon();
+        auxSelAtkPC();
     }else if(pokemon2.checked){
         pokemonJugador = pokemonList[optionPokemon2];
         auxSelPokemonEnemigo();
         auxSelPokemon();
+        auxSelAtkPC();
     }else if(pokemon3.checked){
         pokemonJugador = pokemonList[optionPokemon3];
         auxSelPokemonEnemigo();
         auxSelPokemon();
+        auxSelAtkPC();
     }else{
         alert("no hay pokemon seleccionado");
     }    
-
-    atk_1.innerHTML = pokemonJugador.ataques[0].name;
-    atk_2.innerHTML = pokemonJugador.ataques[1].name;
-    atk_3.innerHTML = pokemonJugador.ataques[2].name;
-    atk_3.innerHTML = pokemonJugador.ataques[3].name;
-    
 }
 
 //Inicialización del Juego
@@ -624,4 +662,5 @@ window.addEventListener("load",()=>{
     atk_1.addEventListener("click",playerAtack1)
     atk_2.addEventListener("click",playerAtack2)
     atk_3.addEventListener("click",playerAtack3)
+    atk_4.addEventListener("click",playerAtack4)
 });

@@ -184,7 +184,7 @@ body {
     display: grid;
     width: 85%;
     max-width: 960px;
-    height: 50vh;
+    height: 55vh;
     margin: 0 auto;
     grid-template-columns: 40% 60%;
     grid-template-rows: 70% 30%;
@@ -295,7 +295,7 @@ body {
     position: absolute;
     width: calc(85%/2.6);
     max-width: 372px;
-    height: calc((50vh/1.44));
+    height: calc((55vh/1.44));
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.815) 0%, rgba(255, 255, 255, 0) 40%);
     animation-name: degCombatAnima;
     animation-duration: 1000ms;
@@ -338,6 +338,21 @@ body {
 }
 
 /* MUNDO ABIERTO */
+#auxH2{
+    display: none;
+}
+
+#auxL{
+    display: block;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+#auxL h2{
+    margin: 0;
+    font-size: 2rem;
+}
 
 #mapa{
     flex-direction: column;
@@ -348,30 +363,166 @@ body {
     border:solid 2px black;
 }
 .mapa_botones{
-    margin-top: 10px;
-    display: grid;
-    width: 200px;
-    height: 100px;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    display: none;
 }
 
-.mapa_botones #mapa_btR{
+#mapa_btR{
     grid-column: 3/4;
     grid-row: 2/3;
 }
 
-.mapa_botones #mapa_btL{
+#mapa_btL{
     grid-column: 1/2;
     grid-row: 2/3;
 }
 
-.mapa_botones #mapa_btDwn{
+#mapa_btDwn{
     grid-column: 2/3;
     grid-row: 2/3;
 }
 
-.mapa_botones #mapa_btUp{
+#mapa_btUp{
     grid-column: 2/3;
     grid-row: 1/2;
+}
+
+/* Media Querys Generales*/
+
+@media (max-height: 750px) {
+    .mapa_botones{
+        margin-top: 10px;
+        display: grid;
+        width: 200px;
+        height: 100px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    
+    header{
+        display: none;
+    }
+    
+    #selec_player h2{
+        font-size: 1rem;
+    }
+
+    .tarjet_pokemon{
+        width: 180px;
+        height: 200px;
+        padding: 10px;
+    }
+    
+    .tarjet_pokemon:hover{
+        background-color: rgb(255, 255, 255);
+        color: rgb(85, 67, 245);
+        cursor: pointer;
+        transform: scale(105%);
+        transition-property: transform;
+    }
+    .tarjet_pokemon_check{
+        width: 175px;
+        height: 195px;
+    }
+
+    .tarjet_pokemon img{
+        image-rendering: pixelated;
+        transform: scale(90%);
+    }
+
+    .tarjet_pokemon_check img{
+        transform: scale(90%);
+    }
+
+    @keyframes selected {
+        0%{
+            transform: translateY(0px) scale(90%);
+        }
+        15%{
+            transform: translateY(10px) scalex(100%) scaleY(80%);
+        }
+        35%{
+            transform: translateY(-30px) scaley(100%) scaleX(80%);
+        }
+        55%{
+            transform: translateY(10px) scalex(100%) scaleY(80%);
+        }
+        70%{
+            transform: translateY(0px) scale(90%);
+        }
+        100%{
+            transform: translateY(  0px) scale(90%);
+        }
+    }
+
+    .arenaBatalla{
+        height: 80vh;
+    }
+
+    #endgame{
+        position: absolute;
+        bottom: 20px;
+    }
+
+    .botonConfirmar{
+        font-size: 1rem;
+    }
+
+    #batalla_ataques button{
+        margin: 3px 6px;
+        width: 125px;
+        height: 2.5rem;
+        background-color: #ffffff;
+        border-radius: 15px;
+        color: #000000;
+        transition-duration: 100ms;
+    }
+    #batalla_ataques{
+        padding: 0 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #mapa h2{
+        display: none;
+    }
+
+    #auxL{
+        display: none;
+    }
+
+    #auxH2{
+        display: block;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+    }
+
+    #auxH2 h2{
+        margin: 0;
+        font-size: 2rem;
+    }
+
+    #mapa_tablero{
+        height: 60vh;
+        margin-top: 12px;
+    }
+
+    #info_battle h2{
+        display: none;
+    }
+
+    #degCombate{
+        width: calc(85%/2.7);
+        max-width: 372px;
+        height: calc((80vh/1.44));
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.815) 0%, rgba(255, 255, 255, 0) 40%);
+        animation-name: degCombatAnima;
+        animation-duration: 1000ms;
+    }
+    
+    #combate::-webkit-scrollbar{
+        width: 20px;
+    }
 }

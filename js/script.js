@@ -69,7 +69,7 @@ let canvaBackground = new Image();
     canvaBackground.src = "http://drive.google.com/uc?export=view&id=1bs2Gp1hgBVsHOprhvGNL0cfBTXuDbjz1";
 
 let canvaBackgroundFront = new Image();
-    canvaBackgroundFront.src = "http://drive.google.com/uc?export=view&id=1bs2Gp1hgBVsHOprhvGNL0cfBTXuDbjz1";
+    canvaBackgroundFront.src = "http://drive.google.com/uc?export=view&id=17OH2oYThgKi2mKufX1sW6P1BDPYuB6qY";
 
 //Clase para Pokemon
 class Pokemon{
@@ -427,7 +427,26 @@ function drawCanvas(){
     pokemonPC2.drawPokemon();
     pokemonPC3.drawPokemon();
 
-    //mapa.drawImage(canvaBackgroundFront,0,0,mapaTablero.width,mapaTablero.height);
+    mapa.drawImage(canvaBackgroundFront,0,0,mapaTablero.width,mapaTablero.height);
+
+    if(pokemonJugador.velX != 0 || pokemonJugador.velY != 0){
+        mapaColisionEnemigos(pokemonPC);
+        mapaColisionEnemigos(pokemonPC2);
+        mapaColisionEnemigos(pokemonPC3);
+    }
+}
+
+//Mundo Abierto Colisiones
+function mapaColisionEnemigos(enemy){
+    if(
+        (pokemonJugador.cordX+15) > (enemy.cordX+75) ||
+        (pokemonJugador.cordX+75) < (enemy.cordX+15) ||
+        (pokemonJugador.cordy+30) > (enemy.cordy+90) ||
+        (pokemonJugador.cordy+90) < (enemy.cordy+30)
+        ){
+            return;
+    }
+        console.log("colision "+enemy.name);
 }
 
 function mapaStop(){
@@ -439,15 +458,19 @@ function mapaMover(e){
     switch(e){
         case 0:
             pokemonJugador.velX = 5;
+            
             break;
         case 1:
             pokemonJugador.velX = -5;
+            
             break;
         case 2:
             pokemonJugador.velY = -5;
+            
             break;
         case 3:
             pokemonJugador.velY = 5;
+            
             break;
     }
 };
@@ -486,27 +509,27 @@ function posEnemyMapa(x,min,max){
     switch(randNumber(min,max)){
         case 0:
             x.cordX = 270;
-            x.cordy = 150;
+            x.cordy = 10;
             break;
         case 1:
             x.cordX = 510;
-            x.cordy = 150;
+            x.cordy = 10;
             break;
         case 2:
             x.cordX = 270;
-            x.cordy =50;
+            x.cordy = 150;
             break;
         case 3:
             x.cordX = 270;
-            x.cordy =260;
+            x.cordy = 150;
             break;
         case 4:
             x.cordX = 30;
-            x.cordy =280;
+            x.cordy = 300;
             break;
         case 5:
             x.cordX = 270;
-            x.cordy =280;
+            x.cordy = 300;
             break;
     }
 }
@@ -557,6 +580,7 @@ function selPokemon(){
     atk_1.innerHTML = pokemonJugador.ataques[0].name;
     atk_2.innerHTML = pokemonJugador.ataques[1].name;
     atk_3.innerHTML = pokemonJugador.ataques[2].name;
+    atk_3.innerHTML = pokemonJugador.ataques[3].name;
     
 }
 

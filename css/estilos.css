@@ -245,7 +245,20 @@ body {
 .batalla_inicio{
     animation-name: battle_start;
     animation-duration: 1000ms;
+    transition-duration: 1000ms;
 }
+
+.batalla_hit{
+    animation-name: battle_hit;
+    animation-duration: 1000ms;
+    transition-duration: 200ms;
+}
+
+.batalla_dead{
+    filter: brightness(0%);
+    transition-duration: 1000ms;
+}
+
 
 @keyframes battle_start {
     0%{
@@ -264,6 +277,15 @@ body {
     }
 }
 
+
+@keyframes battle_hit {
+    0%{
+        transform: translateY(10px);
+        filter: hue-rotate(-40deg) brightness(60%);
+    }
+    100%{
+    }
+}
 
 #batalla_ataques{
     grid-column: 1/2;

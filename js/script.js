@@ -3,6 +3,7 @@ let gameOver = false;
 let battleWiner;
 let historyInfoDeg = 0;
 let pokemonList = [];
+let onBattle = false;
 
 let pokemonJugador;
 let pokemonPC;
@@ -319,13 +320,20 @@ function desactivarBotones(){
     atk_2.disabled = true;
     atk_3.disabled = true;
     atk_4.disabled = true;
+}
 
-    sectionReset.style.display="flex";
+function reactivarBotones(){
+    atk_1.disabled = false;
+    atk_2.disabled = false;
+    atk_3.disabled = false;
+    atk_4.disabled = false;
 }
 
 //Calculos del Combate
 function saludEnemigo(){
     let aux = "";
+
+    batalla_enemy_img.setAttribute("class","batalla_hit");
 
     if(gameOver == true){
         console.log("juego terminado");
@@ -338,32 +346,52 @@ function saludEnemigo(){
 
         spanPcVida.innerHTML = aux;
         if(vida_enemigo == 0){
+            batalla_enemy_img.setAttribute("class","batalla_dead");
             gameOver = true;
             desactivarBotones();
             final("Tu Ganaste");
+            sectionReset.style.display="flex";
         }
     }
+
+    aux2 = setInterval(()=>{
+        if(gameOver == false){
+            batalla_enemy_img.removeAttribute("class");
+        }
+    },1000);
+
 }
 
 function saludPlayer(){
     let aux = "";
+
+    batalla_player_img.setAttribute("class","batalla_hit");
     
     if(gameOver == true){
         console.log("juego terminado");
     }else{
         vida_player = vida_player - 1;
 
-        for (let i = 0; i < vida_enemigo; i++) {
+        for (let i = 0; i < vida_player; i++) {
             aux += "💙";
         }
 
         spanPlayerVida.innerHTML = aux;
         if(vida_player == 0){
+            batalla_player_img.setAttribute("class","batalla_dead");
             gameOver = true;
             desactivarBotones();
             final("Perdiste");
+            sectionReset.style.display="flex";
         }
     }
+    
+    aux2 = setInterval(()=>{
+        if(gameOver == false){
+            batalla_player_img.removeAttribute("class");
+        }
+    },1000);
+
 }
 
 function batalla(){
@@ -432,6 +460,13 @@ function degradadoHistorial(){
 
 //Ataques del Jugador
 function playerAtack1(){
+    let aux;
+
+    desactivarBotones();
+    aux = setTimeout(()=>{
+        reactivarBotones();
+    },1000);
+
     ataqueJugador = 1;
     enemyAtack();
     batalla();
@@ -440,6 +475,13 @@ function playerAtack1(){
 }
 
 function playerAtack2(){
+    let aux;
+
+    desactivarBotones();
+    aux = setTimeout(()=>{
+        reactivarBotones();
+    },1000);
+
     ataqueJugador = 2;
     enemyAtack();
     batalla();
@@ -448,6 +490,13 @@ function playerAtack2(){
 }
 
 function playerAtack3(){
+    let aux;
+
+    desactivarBotones();
+    aux = setTimeout(()=>{
+        reactivarBotones();
+    },1000);
+
     ataqueJugador = 3;
     batalla();
     enemyAtack();
@@ -456,6 +505,13 @@ function playerAtack3(){
 }
 
 function playerAtack4(){
+    let aux;
+
+    desactivarBotones();
+    aux = setTimeout(()=>{
+        reactivarBotones();
+    },1000);
+
     ataqueJugador = 4;
     batalla();
     enemyAtack();
@@ -479,6 +535,27 @@ function batallaVisuales(){
 }
 
 //Mundo Abierto
+function mapaColisionEnemigos(enemy){
+    if(
+        (pokemonJugador.cordX+15) > (enemy.cordX+75) ||
+        (pokemonJugador.cordX+75) < (enemy.cordX+15) ||
+        (pokemonJugador.cordy+30) > (enemy.cordy+90) ||
+        (pokemonJugador.cordy+90) < (enemy.cordy+30)
+        ){
+            return;
+    }
+    pokemonEnemigo = enemy;
+    batallaVisuales();
+    
+    spanPc.innerHTML = enemy.name;
+    mapaStop();
+    onBattle = true;
+    sectionBatalla.style.display = "flex";
+    sectionMapa.style.display = "none";
+    auxHtmlH2.style.display = "none";
+    auxHtmlL.style.display = "none";
+}
+
 function drawCanvas(){
     pokemonJugador.cordX = pokemonJugador.cordX + pokemonJugador.velX;
     pokemonJugador.cordy = pokemonJugador.cordy + pokemonJugador.velY;
@@ -502,50 +579,30 @@ function drawCanvas(){
     }
 }
 
-//Mundo Abierto Colisiones
-function mapaColisionEnemigos(enemy){
-    if(
-        (pokemonJugador.cordX+15) > (enemy.cordX+75) ||
-        (pokemonJugador.cordX+75) < (enemy.cordX+15) ||
-        (pokemonJugador.cordy+30) > (enemy.cordy+90) ||
-        (pokemonJugador.cordy+90) < (enemy.cordy+30)
-        ){
-            return;
-    }
-    pokemonEnemigo = enemy;
-    batallaVisuales();
-    
-    spanPc.innerHTML = enemy.name;
-    mapaStop();
-    sectionBatalla.style.display = "flex";
-    sectionMapa.style.display = "none";
-    auxHtmlH2.style.display = "none";
-    auxHtmlL.style.display = "none";
-}
-
 function mapaStop(){
     pokemonJugador.velX = 0;
     pokemonJugador.velY = 0;
 }
 
 function mapaMover(e){
-    switch(e){
-        case 0:
-            pokemonJugador.velX = 5;
-            
-            break;
-        case 1:
-            pokemonJugador.velX = -5;
-            
-            break;
-        case 2:
-            pokemonJugador.velY = -5;
-            
-            break;
-        case 3:
-            pokemonJugador.velY = 5;
-            
-            break;
+    if(onBattle == false){
+        switch(e){
+            case 0:
+                pokemonJugador.velX = 5;
+                
+                break;
+            case 1:
+                pokemonJugador.velX = -5;
+                
+                break;
+            case 2:
+                pokemonJugador.velY = -5;
+                
+                break;
+            case 3:
+                pokemonJugador.velY = 5;
+                break;
+        }
     }
 };
 

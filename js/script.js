@@ -63,6 +63,12 @@ let ataquePc = 0;
 
 //Variables section "combate"
 const historial = document.getElementById("combate");
+const combateJugador = document.getElementById("batallaJugadorVisual");
+const combateEnemy = document.getElementById("batallaEnemigoVisual");
+
+let batalla_player_img;
+let batalla_enemy_img;
+
 let parrafo;
 
 //Variables del mundo abierto
@@ -319,11 +325,18 @@ function desactivarBotones(){
 
 //Calculos del Combate
 function saludEnemigo(){
+    let aux = "";
+
     if(gameOver == true){
         console.log("juego terminado");
     }else{
         vida_enemigo = vida_enemigo - 1;
-        spanPcVida.innerHTML = vida_enemigo;
+
+        for (let i = 0; i < vida_enemigo; i++) {
+            aux += "🧡";
+        }
+
+        spanPcVida.innerHTML = aux;
         if(vida_enemigo == 0){
             gameOver = true;
             desactivarBotones();
@@ -333,11 +346,18 @@ function saludEnemigo(){
 }
 
 function saludPlayer(){
+    let aux = "";
+    
     if(gameOver == true){
         console.log("juego terminado");
     }else{
         vida_player = vida_player - 1;
-        spanPlayerVida.innerHTML = vida_player;
+
+        for (let i = 0; i < vida_enemigo; i++) {
+            aux += "💙";
+        }
+
+        spanPlayerVida.innerHTML = aux;
         if(vida_player == 0){
             gameOver = true;
             desactivarBotones();
@@ -447,6 +467,17 @@ function newGame(){
     location.reload();
 }
 
+function batallaVisuales(){
+    combateEnemy.innerHTML =`<img src="${pokemonEnemigo.img}" id="batallaEnemyImg"/>`;
+    combateJugador.innerHTML =`<img src="${pokemonJugador.img}" id="batallaPlayerImg"/>`;
+
+    batalla_enemy_img = document.getElementById("batallaEnemyImg");
+    batalla_enemy_img.setAttribute("class","batalla_inicio");
+
+    batalla_player_img = document.getElementById("batallaPlayerImg");
+    batalla_player_img.setAttribute("class","batalla_inicio");
+}
+
 //Mundo Abierto
 function drawCanvas(){
     pokemonJugador.cordX = pokemonJugador.cordX + pokemonJugador.velX;
@@ -482,6 +513,8 @@ function mapaColisionEnemigos(enemy){
             return;
     }
     pokemonEnemigo = enemy;
+    batallaVisuales();
+    
     spanPc.innerHTML = enemy.name;
     mapaStop();
     sectionBatalla.style.display = "flex";

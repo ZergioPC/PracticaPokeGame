@@ -27,10 +27,10 @@
         <h2>Recorre la ciudad</h2>
         <canvas id="mapa_tablero"></canvas>
         <div class="mapa_botones">
-            <button ontouchstart="mapaMover(0)" ontouchend="mapaStop()" id="mapa_btR">→</button>
-            <button ontouchstart="mapaMover(1)" ontouchend="mapaStop()" id="mapa_btL">←</button>
-            <button ontouchstart="mapaMover(2)" ontouchend="mapaStop()" id="mapa_btUp">↑</button>
-            <button ontouchstart="mapaMover(3)" ontouchend="mapaStop()" id="mapa_btDwn">↓</button>
+            <button ontouchstart="mapaMover(0)" ontouchend="mapaStop()" class="noselect" id="mapa_btR">→</button>
+            <button ontouchstart="mapaMover(1)" ontouchend="mapaStop()" class="noselect" id="mapa_btL">←</button>
+            <button ontouchstart="mapaMover(2)" ontouchend="mapaStop()" class="noselect" id="mapa_btUp">↑</button>
+            <button ontouchstart="mapaMover(3)" ontouchend="mapaStop()" class="noselect" id="mapa_btDwn">↓</button>
         </div>
     </section>
     <div id="auxH2"><h2>Recorre la ciudad</h2></div>
@@ -40,8 +40,10 @@
         <h2>¡Combate!</h2>
         <div class="arenaBatalla">
             <div id="batalla_visual">
-                <p>Tu pokemon <span id="spanplayer">_</span> tiene <span id="player_vidas">3</span> vidas</p>
-                <p>El Pokemon enemigo <span id="spanpc">_</span> tiene <span id="pc_vidas">3</span> vidas</p>
+                <p id="vidas_Jugador"><span id="spanplayer">#</span><br><span id="player_vidas">💙💙💙</span></p>
+                <p id="vidas_Enemigo"><span id="spanpc">#</span><br><span id="pc_vidas">🧡🧡🧡</span></p>
+                <div id="batallaJugadorVisual"></div>
+                <div id="batallaEnemigoVisual"></div>
             </div>
             <div id="batalla_ataques">
                 <button id="atack_1" name="ataque 1">Ataque1</button>

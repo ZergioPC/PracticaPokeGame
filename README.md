@@ -10,11 +10,15 @@ Este repositorio es el resultado de las prácticas realizadas durante el curso d
 5. Por ultimo, se modificaron el JS y el CSS para hacer un diseño responsive.
 
 ## Assets
-Los assets fueron obtenidos del juego [Pokemon Opalo](https://es.wikipedia.org/wiki/Pokémon_(serie_de_videojuegos) correspondientes a la **Quinta Generación.** Estos se encuentran guardados en una carpeta de Google Drive con el fin de no afectar el repositorio y a su vez puedan ser utilizados por **GitPages.**
+Los assets fueron obtenidos del juego [Pokemon Opalo](https://es.wikipedia.org/wiki/Pokémon_(serie_de_videojuegos)) correspondientes a la **Quinta Generación.** Estos se encuentran guardados en una carpeta de Google Drive con el fin de no afectar el repositorio y a su vez puedan ser utilizados por **GitHubPages.**
 
 ![Archivos en GoogleDrive](http://drive.google.com/uc?export=view&id=1pYIAoIH8RU58IJ_3DeIem3HLDT5uFIw7 "Archivos en GoogleDrive")
 
-> Aún me falta mucho por aprender, por lo que sí alguien tiene correcciones o sugerencias sobre este codigo con gusto me gustaría recibirlas :tw-1f603:
+El juego se encuentra disponible gracias al servicio de **GitHubPages** en el siguiente enlace:
+- https://zergiopc.github.io/PracticaPokeGame/
 
+## Mensaje Final
+> Aún me falta mucho por aprender, por lo que sí alguien tiene correcciones o sugerencias sobre este codigo con gusto me gustaría recibirlas.
+>
 >att:  **Sergio Palacios**
 

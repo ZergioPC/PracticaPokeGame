@@ -79,10 +79,10 @@ let mapaTablero = document.getElementById("mapa_tablero");
 
 let mapa = mapaTablero.getContext("2d");
 let canvaBackground = new Image();
-    canvaBackground.src = "http://drive.google.com/uc?export=view&id=1bs2Gp1hgBVsHOprhvGNL0cfBTXuDbjz1";
+    canvaBackground.src = "	https://lh3.google.com/u/5/d/1bs2Gp1hgBVsHOprhvGNL0cfBTXuDbjz1=w976-h748-iv2";
 
 let canvaBackgroundFront = new Image();
-    canvaBackgroundFront.src = "http://drive.google.com/uc?export=view&id=17OH2oYThgKi2mKufX1sW6P1BDPYuB6qY";
+    canvaBackgroundFront.src = "https://lh3.google.com/u/5/d/17OH2oYThgKi2mKufX1sW6P1BDPYuB6qY=w1069-h748-iv3";
 
 let btnUp;
 let btnDwn;
@@ -117,7 +117,7 @@ class Pokemon{
 }
 
 //Objetos Pokemon
-let poke_pikachu = new Pokemon("Pikachu","http://drive.google.com/uc?export=view&id=1Uk1tlgelpchcb-3_b8lVxUPeWa_wd4l4");
+let poke_pikachu = new Pokemon("Pikachu","https://lh3.google.com/u/5/d/1Uk1tlgelpchcb-3_b8lVxUPeWa_wd4l4=w1069-h748-iv1");
 poke_pikachu.ataques.push(
     {name:"Impactrueno",id:"atack_1"},
     {name:"Ataque rápido",id:"atack_2"},
@@ -125,7 +125,7 @@ poke_pikachu.ataques.push(
     {name:"Puño trueno",id:"atack_4"}
 );
 
-let poke_combusken = new Pokemon("Combusken","http://drive.google.com/uc?export=view&id=1AeLeu1r0eJUS_XpstRRKs9NXN9cVwCJ2");
+let poke_combusken = new Pokemon("Combusken","https://lh3.google.com/u/5/d/1AeLeu1r0eJUS_XpstRRKs9NXN9cVwCJ2=w1069-h748-iv1");
 poke_combusken.ataques.push(
     {name:"Lanzallamas",id:"atack_1"},
     {name:"Doble patada",id:"atack_2"},
@@ -133,7 +133,7 @@ poke_combusken.ataques.push(
     {name:"Patada ígnea",id:"atack_4"}
 );
 
-let poke_duskull = new Pokemon("Duskull","http://drive.google.com/uc?export=view&id=1qQEBXeITKFibSrMB20Eyuo_VGUumVJC8");
+let poke_duskull = new Pokemon("Duskull","https://lh3.google.com/u/5/d/1qQEBXeITKFibSrMB20Eyuo_VGUumVJC8=w1069-h748-iv1");
 poke_duskull.ataques.push(
     {name:"Bola sombra",id:"atack_1"},
     {name:"Impresionar",id:"atack_2"},
@@ -141,7 +141,7 @@ poke_duskull.ataques.push(
     {name:"Tinieblas",id:"atack_4"}
 );
 
-let poke_jigglypuff = new Pokemon("Jigglypuff","http://drive.google.com/uc?export=view&id=1SsfTQsIB54HNKqwaKsxwHoUjRiqAFw9D");
+let poke_jigglypuff = new Pokemon("Jigglypuff","https://lh3.google.com/u/5/d/1SsfTQsIB54HNKqwaKsxwHoUjRiqAFw9D=w1069-h748-iv1");
 poke_jigglypuff.ataques.push(
     {name:"Encanto",id:"atack_1"},
     {name:"Golpe cuerpo",id:"atack_2"},
@@ -149,7 +149,7 @@ poke_jigglypuff.ataques.push(
     {name:"Rizo defensa",id:"atack_4"}
 );
 
-let poke_psyduck = new Pokemon("Psyduck","http://drive.google.com/uc?export=view&id=1yyXY-3Me5VF7nWZOD6lZPwYMmn7SjxF_");
+let poke_psyduck = new Pokemon("Psyduck","https://lh3.google.com/u/5/d/1yyXY-3Me5VF7nWZOD6lZPwYMmn7SjxF_=w1069-h748-iv1");
 poke_psyduck.ataques.push(
     {name:"Amnesia",id:"atack_1"},
     {name:"Arañazo",id:"atack_2"},
@@ -157,7 +157,7 @@ poke_psyduck.ataques.push(
     {name:"Cabezazo zen",id:"atack_4"}
 );
 
-let poke_gyarados = new Pokemon("Gyarados","http://drive.google.com/uc?export=view&id=11WySTOHq75-bn_YyxFxWU7nsd0ZdUwjQ");
+let poke_gyarados = new Pokemon("Gyarados","https://lh3.google.com/u/5/d/11WySTOHq75-bn_YyxFxWU7nsd0ZdUwjQ=w1069-h748-iv1");
 poke_gyarados.ataques.push(
     {name:"Amnesia",id:"atack_1"},
     {name:"Arañazo",id:"atack_2"},
@@ -165,7 +165,7 @@ poke_gyarados.ataques.push(
     {name:"Cabezazo zen",id:"atack_4"}
 );
 
-let poke_dragonite = new Pokemon("Dragonite","http://drive.google.com/uc?export=view&id=1uvojy-ildW7Q5nM9HyMYQU2xIK7JcsHU");
+let poke_dragonite = new Pokemon("Dragonite","https://lh3.google.com/u/5/d/1uvojy-ildW7Q5nM9HyMYQU2xIK7JcsHU=w4000-h8220-iv1");
 poke_dragonite.ataques.push(
     {name:"Lanzallamas",id:"atack_1"},
     {name:"Danza dragón",id:"atack_2"},
@@ -173,7 +173,7 @@ poke_dragonite.ataques.push(
     {name:"Onda trueno",id:"atack_4"}
 );
 
-let poke_mewtwo = new Pokemon("Mewtwo","http://drive.google.com/uc?export=view&id=1DURyLs4e1XDqLJbTHpQPPRV4G1zsnwiB");
+let poke_mewtwo = new Pokemon("Mewtwo","https://lh3.google.com/u/5/d/1DURyLs4e1XDqLJbTHpQPPRV4G1zsnwiB=w4000-h8220-iv1");
 poke_mewtwo.ataques.push(
     {name:"Esfera aural",id:"atack_1"},
     {name:"Psicocorte",id:"atack_2"},
@@ -181,7 +181,7 @@ poke_mewtwo.ataques.push(
     {name:"Premonición",id:"atack_4"}
 );
 
-let poke_eevee = new Pokemon("Eevee","http://drive.google.com/uc?export=view&id=1lxrs6cIJKZeSyWRvzmsPHrZ8YwUOh9PB");
+let poke_eevee = new Pokemon("Eevee","https://lh3.google.com/u/5/d/1lxrs6cIJKZeSyWRvzmsPHrZ8YwUOh9PB=w4000-h8220-iv1");
 poke_eevee.ataques.push(
     {name:"Mordisco",id:"atack_1"},
     {name:"Látigo",id:"atack_2"},

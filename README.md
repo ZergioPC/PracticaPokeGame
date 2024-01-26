@@ -15,7 +15,7 @@ Los assets fueron obtenidos del juego [Pokemon Opalo](https://es.wikipedia.org/w
 ![Archivos en GoogleDrive](http://drive.google.com/uc?export=view&id=1pYIAoIH8RU58IJ_3DeIem3HLDT5uFIw7 "Archivos en GoogleDrive")
 
 El juego se encuentra disponible gracias al servicio de **GitHubPages** en el siguiente enlace:
-- https://zergiopc.github.io/PracticaPokeGame/
+- https://zergiopc.github.io/PracticaWebDesign/
 
 ## Mensaje Final
 > Aún me falta mucho por aprender, por lo que sí alguien tiene correcciones o sugerencias sobre este codigo con gusto me gustaría recibirlas.

@@ -45,7 +45,7 @@ input{
 }
 
 body {
-    background-image: url("../img/background.png");
+    background-image: url("https://lh3.googleusercontent.com/pw/AP1GczO4_V3ZQVPjT94VAKvscbx8DUgjM6auD1Z4dHVxdS9h6uVCLcpYoBQLTidq-i5WEfnH-OSqw-C7anMbB-F36pXCsjrsecCS7sxfk290SNXXnMOmfF4=w2400");
     background-size: auto 100vh;
     font-family: 'Hedvig Letters Sans', sans-serif;
 }
@@ -217,7 +217,7 @@ body {
     grid-template-rows: 30% 70%;
 
     box-sizing: border-box;
-    background-image: url("../img/bg_batalla.png");
+    background-image: url('https://lh3.googleusercontent.com/pw/AP1GczPmiEJKAIvLPBkPZHoFhzzdEIyghvJKzU4RROTN4QKIH63ggw7XuGZRwIVQ9oc_AsjhiSgrR9G27tNldSh8v4Ds_CTH6Qawdwbdg1QqMprOBvBSuV4=w2400');
     background-size: cover;
     border: solid 3px black;
     border-radius: 0 20px 20px 0;
@@ -309,7 +309,7 @@ body {
     align-items: center;
     align-items: center;
     box-sizing: border-box;
-    background-image: url("../img/bg_ataques.png");
+    background-image: url("https://lh3.googleusercontent.com/pw/AP1GczOSRC4VTW8_aK4Jl-jRyf2rh1ssBUyrOIcQmnW1C0WNU8EMjEq3B9gBqHpK9wcNqD6Pf3rliwVVeEZoPXZLov5QOxLg0WvxXfW5VQkePYrMu1bpRZM=w2400");
     background-size: cover;
     border: solid 3px black;
     border-radius: 0 0 0 20px;
@@ -340,7 +340,7 @@ body {
     grid-row: 1/2;
     padding: 10px 0 0 0;
     box-sizing: border-box;
-    background-image: url("../img/bg_historial.png");
+    background-image: url("https://lh3.googleusercontent.com/pw/AP1GczPgSZSNjWvKy4kqMbPKe1bFtDpm25a3jvzk2YNX_ZYK9m4staAZsv7KL4uymHQ_JEOOqgIDxy9evcdhnx-O2L9TkljTlltQjHgpyIpB1X_jXyy3ckQ=w2400");
     background-size: cover;
     background-position: -50px 0px;
     border: solid 3px black;

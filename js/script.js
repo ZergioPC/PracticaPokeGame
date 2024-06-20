@@ -1,3 +1,6 @@
+const $imgs = document.querySelectorAll('#imagenes img');
+console.log($imgs)
+
 //variables globales
 let gameOver = false;
 let battleWiner;
@@ -78,11 +81,8 @@ let mapaTablero = document.getElementById("mapa_tablero");
     mapaTablero.height = 387;
 
 let mapa = mapaTablero.getContext("2d");
-let canvaBackground = new Image();
-    canvaBackground.src = "	https://lh3.google.com/u/5/d/1bs2Gp1hgBVsHOprhvGNL0cfBTXuDbjz1=w976-h748-iv2";
-
-let canvaBackgroundFront = new Image();
-    canvaBackgroundFront.src = "https://lh3.google.com/u/5/d/17OH2oYThgKi2mKufX1sW6P1BDPYuB6qY=w1069-h748-iv3";
+let canvaBackground = $imgs[0];
+let canvaBackgroundFront = $imgs[1];
 
 let btnUp;
 let btnDwn;
@@ -99,8 +99,7 @@ class Pokemon{
         this.cordy = 30;
         this.width = 100;
         this.height = 100;
-        this.canvas = new Image();
-        this.canvas.src = img;
+        this.canvas = img;
         this.velX = 0;
         this.velY = 0;
     }
@@ -117,7 +116,7 @@ class Pokemon{
 }
 
 //Objetos Pokemon
-let poke_pikachu = new Pokemon("Pikachu","https://lh3.google.com/u/5/d/1Uk1tlgelpchcb-3_b8lVxUPeWa_wd4l4=w1069-h748-iv1");
+let poke_pikachu = new Pokemon("Pikachu",$imgs[9]);
 poke_pikachu.ataques.push(
     {name:"Impactrueno",id:"atack_1"},
     {name:"Ataque rápido",id:"atack_2"},
@@ -125,7 +124,7 @@ poke_pikachu.ataques.push(
     {name:"Puño trueno",id:"atack_4"}
 );
 
-let poke_combusken = new Pokemon("Combusken","https://lh3.google.com/u/5/d/1AeLeu1r0eJUS_XpstRRKs9NXN9cVwCJ2=w1069-h748-iv1");
+let poke_combusken = new Pokemon("Combusken",$imgs[2]);
 poke_combusken.ataques.push(
     {name:"Lanzallamas",id:"atack_1"},
     {name:"Doble patada",id:"atack_2"},
@@ -133,7 +132,7 @@ poke_combusken.ataques.push(
     {name:"Patada ígnea",id:"atack_4"}
 );
 
-let poke_duskull = new Pokemon("Duskull","https://lh3.google.com/u/5/d/1qQEBXeITKFibSrMB20Eyuo_VGUumVJC8=w1069-h748-iv1");
+let poke_duskull = new Pokemon("Duskull",$imgs[4]);
 poke_duskull.ataques.push(
     {name:"Bola sombra",id:"atack_1"},
     {name:"Impresionar",id:"atack_2"},
@@ -141,7 +140,7 @@ poke_duskull.ataques.push(
     {name:"Tinieblas",id:"atack_4"}
 );
 
-let poke_jigglypuff = new Pokemon("Jigglypuff","https://lh3.google.com/u/5/d/1SsfTQsIB54HNKqwaKsxwHoUjRiqAFw9D=w1069-h748-iv1");
+let poke_jigglypuff = new Pokemon("Jigglypuff",$imgs[7]);
 poke_jigglypuff.ataques.push(
     {name:"Encanto",id:"atack_1"},
     {name:"Golpe cuerpo",id:"atack_2"},
@@ -149,7 +148,7 @@ poke_jigglypuff.ataques.push(
     {name:"Rizo defensa",id:"atack_4"}
 );
 
-let poke_psyduck = new Pokemon("Psyduck","https://lh3.google.com/u/5/d/1yyXY-3Me5VF7nWZOD6lZPwYMmn7SjxF_=w1069-h748-iv1");
+let poke_psyduck = new Pokemon("Psyduck",$imgs[10]);
 poke_psyduck.ataques.push(
     {name:"Amnesia",id:"atack_1"},
     {name:"Arañazo",id:"atack_2"},
@@ -157,7 +156,7 @@ poke_psyduck.ataques.push(
     {name:"Cabezazo zen",id:"atack_4"}
 );
 
-let poke_gyarados = new Pokemon("Gyarados","https://lh3.google.com/u/5/d/11WySTOHq75-bn_YyxFxWU7nsd0ZdUwjQ=w1069-h748-iv1");
+let poke_gyarados = new Pokemon("Gyarados",$imgs[6]);
 poke_gyarados.ataques.push(
     {name:"Amnesia",id:"atack_1"},
     {name:"Arañazo",id:"atack_2"},
@@ -165,7 +164,7 @@ poke_gyarados.ataques.push(
     {name:"Cabezazo zen",id:"atack_4"}
 );
 
-let poke_dragonite = new Pokemon("Dragonite","https://lh3.google.com/u/5/d/1uvojy-ildW7Q5nM9HyMYQU2xIK7JcsHU=w4000-h8220-iv1");
+let poke_dragonite = new Pokemon("Dragonite",$imgs[3]);
 poke_dragonite.ataques.push(
     {name:"Lanzallamas",id:"atack_1"},
     {name:"Danza dragón",id:"atack_2"},
@@ -173,7 +172,7 @@ poke_dragonite.ataques.push(
     {name:"Onda trueno",id:"atack_4"}
 );
 
-let poke_mewtwo = new Pokemon("Mewtwo","https://lh3.google.com/u/5/d/1DURyLs4e1XDqLJbTHpQPPRV4G1zsnwiB=w4000-h8220-iv1");
+let poke_mewtwo = new Pokemon("Mewtwo",$imgs[8]);
 poke_mewtwo.ataques.push(
     {name:"Esfera aural",id:"atack_1"},
     {name:"Psicocorte",id:"atack_2"},
@@ -181,7 +180,7 @@ poke_mewtwo.ataques.push(
     {name:"Premonición",id:"atack_4"}
 );
 
-let poke_eevee = new Pokemon("Eevee","https://lh3.google.com/u/5/d/1lxrs6cIJKZeSyWRvzmsPHrZ8YwUOh9PB=w4000-h8220-iv1");
+let poke_eevee = new Pokemon("Eevee",$imgs[5]);
 poke_eevee.ataques.push(
     {name:"Mordisco",id:"atack_1"},
     {name:"Látigo",id:"atack_2"},
@@ -205,7 +204,7 @@ function auxSelPokemonHtml(x,i){
     let htmlDialog = `
     <label for="poke${i}" class="tarjet_pokemon" id="tar_poke${i}">
         <p>${pokemonList[x].name}</p>
-        <img src="${pokemonList[x].img}" alt="${pokemonList[x].name}">
+        <img src="${pokemonList[x].img.src}" alt="${pokemonList[x].name}">
     </label>
     <input id="poke${i}" type="radio" name="poke_player"></input>
     `;
@@ -524,8 +523,8 @@ function newGame(){
 }
 
 function batallaVisuales(){
-    combateEnemy.innerHTML =`<img src="${pokemonEnemigo.img}" id="batallaEnemyImg"/>`;
-    combateJugador.innerHTML =`<img src="${pokemonJugador.img}" id="batallaPlayerImg"/>`;
+    combateEnemy.innerHTML =`<img src="${pokemonEnemigo.img.src}" id="batallaEnemyImg"/>`;
+    combateJugador.innerHTML =`<img src="${pokemonJugador.img.src}" id="batallaPlayerImg"/>`;
 
     batalla_enemy_img = document.getElementById("batallaEnemyImg");
     batalla_enemy_img.setAttribute("class","batalla_inicio");

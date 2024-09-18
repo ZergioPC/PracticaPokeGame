@@ -20,3 +20,4 @@ El juego se encuentra disponible gracias al servicio de **GitHubPages** en el si
 >
 >att:  **Sergio Palacios**
 
+--(ignorar)Esto ultimo es una prueba para vincular mi otro PC
